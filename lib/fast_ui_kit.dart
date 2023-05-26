@@ -1,7 +1,5 @@
 library fast_ui_kit;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:fast_ui_kit/ui/widgets/button.dart';
+export 'package:fast_ui_kit/icons/icons.dart';
+export 'package:fast_ui_kit/ui/theme/fast_theme.dart';
