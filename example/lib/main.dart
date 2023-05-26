@@ -33,8 +33,16 @@ class HomePage extends StatelessWidget {
           FastButton(
             label: 'Confirmar',
             onPressed: () {},
+            // elevation: 0,
+            // variant: ButtonVariant.contained,
           ),
-          Icon(FastIcons.modernPictograms.mail),
+          Row(
+            children: [
+              Icon(FastIcons.awesome.instagram, size: 40),
+              Icon(FastIcons.awesome.facebook_square, size: 40),
+              Icon(FastIcons.awesome.whatsapp, size: 40),
+            ],
+          ),
         ],
       ),
     );

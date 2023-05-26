@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class FastIconsData extends IconData {
   const FastIconsData(int codePoint, String fontFamily)
-      : super(codePoint, fontFamily: fontFamily, fontPackage: "icons_flutter");
+      : super(codePoint, fontFamily: fontFamily, fontPackage: "fast_ui_kit");
 
   const FastIconsData.ionicons(int codePoint) : this(codePoint, "Ionicons");
 
