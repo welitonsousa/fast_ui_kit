@@ -26,26 +26,48 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Fast UI Kit'),
+      ),
       body: ListView(
         children: [
           FastRow(
             children: [
-              Icon(FastIcons.evil.eye, size: 40),
+              Icon(FastIcons.maki.airport, size: 40),
               Icon(FastIcons.ant.CodeSandbox, size: 40),
               Icon(FastIcons.awesome.facebook_square, size: 40),
-              Icon(FastIcons.awesome.whatsapp, size: 40),
+              Icon(FastIcons.elico.chrome, size: 40),
             ],
           ),
           FastColumn(
             xGap: 10,
             yGap: 10,
             children: [
+              FastButtonIcon(
+                icon: FastIcons.modernPictograms.pencil,
+                variant: ButtonVariant.outlined,
+                onPressed: () {},
+                loading: true,
+              ),
               FastButton(
                 label: 'Confirmar',
-                onPressed: () {},
-                variant: ButtonVariant.outlined,
+                // variant: ButtonVariant.outlined,
+                onPressed: () {
+                  context.showMessage(
+                    'Algo foi alterado com sucesso',
+                    title: 'Sucesso',
+                    type: MessageVariant.error,
+                    style: Style.raised,
+                  );
+                },
               ),
-              const FastSkeleton(),
+              const Row(
+                children: [
+                  SizedBox(width: 50, child: FastSkeleton(radius: 100)),
+                  SizedBox(width: 10),
+                  Expanded(child: FastSkeleton()),
+                ],
+              ),
               const FastRow(
                 children: [
                   FastImg(

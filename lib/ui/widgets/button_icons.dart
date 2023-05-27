@@ -1,10 +1,8 @@
-import 'package:fast_ui_kit/extension/context.dart';
+import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
-enum ButtonVariant { outlined, contained }
-
-class FastButton extends StatefulWidget {
-  final String label;
+class FastButtonIcon extends StatefulWidget {
+  final IconData icon;
   final VoidCallback? onPressed;
   final bool? loading;
   final Color? background;
@@ -13,9 +11,9 @@ class FastButton extends StatefulWidget {
   final double? elevation;
   final ButtonVariant variant;
 
-  const FastButton(
+  const FastButtonIcon(
       {super.key,
-      required this.label,
+      required this.icon,
       this.onPressed,
       this.loading,
       this.background,
@@ -25,10 +23,10 @@ class FastButton extends StatefulWidget {
       this.variant = ButtonVariant.contained});
 
   @override
-  State<FastButton> createState() => _FastButtonState();
+  State<FastButtonIcon> createState() => _FastButtonIconState();
 }
 
-class _FastButtonState extends State<FastButton> {
+class _FastButtonIconState extends State<FastButtonIcon> {
   ButtonStyle? get style {
     if (widget.onPressed != null) {
       return ButtonStyle(
@@ -36,7 +34,7 @@ class _FastButtonState extends State<FastButton> {
           backgroundColor: MaterialStateProperty.all<Color>(bgColor),
           shape: MaterialStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(widget.radius ?? 8),
+              borderRadius: BorderRadius.circular(widget.radius ?? 200),
               side: BorderSide(color: borderColor, width: 2),
             ),
           ));
@@ -66,11 +64,13 @@ class _FastButtonState extends State<FastButton> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
+      width: 72,
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: style,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             if (widget.loading ?? false)
               SizedBox(
@@ -82,9 +82,9 @@ class _FastButtonState extends State<FastButton> {
                 ),
               ),
             if (!(widget.loading ?? false))
-              Text(
-                widget.label,
-                style: TextStyle(color: textColor),
+              Icon(
+                widget.icon,
+                color: textColor,
               ),
           ],
         ),
