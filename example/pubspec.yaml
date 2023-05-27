@@ -11,6 +11,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   fast_ui_kit:
     path: ../
+  mask: ^1.0.5
 
 dev_dependencies:
   flutter_test:

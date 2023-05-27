@@ -1,4 +1,3 @@
-// import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = FastTheme(seed: Colors.blue);
+    final theme = FastTheme(seed: Colors.purple);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
       darkTheme: theme.dark,
       theme: theme.light,
       home: const HomePage(),
@@ -28,19 +26,43 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: [
-          FastButton(
-            label: 'Confirmar',
-            onPressed: () {},
-            // elevation: 0,
-            // variant: ButtonVariant.contained,
-          ),
-          Row(
+          FastRow(
             children: [
-              Icon(FastIcons.awesome.instagram, size: 40),
+              Icon(FastIcons.evil.eye, size: 40),
+              Icon(FastIcons.ant.CodeSandbox, size: 40),
               Icon(FastIcons.awesome.facebook_square, size: 40),
               Icon(FastIcons.awesome.whatsapp, size: 40),
+            ],
+          ),
+          FastColumn(
+            xGap: 10,
+            yGap: 10,
+            children: [
+              FastButton(
+                label: 'Confirmar',
+                onPressed: () {},
+                variant: ButtonVariant.outlined,
+              ),
+              const FastSkeleton(),
+              const FastRow(
+                children: [
+                  FastImg(
+                    path: 'https://github.com/welitonsousa.png',
+                    width: 60,
+                  ),
+                  FastAvatar(path: 'https://github.com/welitonsousa.png'),
+                ],
+              ),
+              FastFormField(
+                minLines: 1,
+                validator: Mask.validations.cpf,
+                // validator: Zod().cpf().build,
+                mask: [
+                  Mask.cpf(),
+                ],
+              ),
             ],
           ),
         ],
