@@ -10,6 +10,8 @@ class FastFormField extends StatelessWidget {
   final Widget? prefix;
   final Widget? suffix;
   final bool? isPassword;
+  final bool? autoFocus;
+  final void Function(String)? onChanged;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final void Function(String)? onFieldSubmitted;
@@ -22,6 +24,8 @@ class FastFormField extends StatelessWidget {
   const FastFormField({
     super.key,
     this.label,
+    this.onChanged,
+    this.autoFocus,
     this.hint,
     this.prefix,
     this.suffix,
@@ -43,12 +47,14 @@ class FastFormField extends StatelessWidget {
       obscureText: isPassword ?? false,
       controller: controller,
       inputFormatters: mask,
+      onChanged: onChanged,
       textInputAction: textInputAction,
       onFieldSubmitted: onFieldSubmitted,
       keyboardType: textInputType,
       maxLines: maxLines,
       minLines: minLines,
       validator: validator,
+      autofocus: autoFocus ?? false,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: label,

@@ -27,8 +27,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fast UI Kit'),
+      appBar: FastSearchAppBar(
+        title: "Fast UI Kit",
+        onSearch: (v) {},
       ),
       body: FastContent(
         children: [
