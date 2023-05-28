@@ -21,3 +21,4 @@ export 'package:fast_ui_kit/ui/widgets/form_field.dart';
 export 'package:fast_ui_kit/ui/widgets/content.dart';
 export 'package:fast_ui_kit/ui/widgets/dialog.dart';
 export 'package:fast_ui_kit/ui/widgets/search_app_bar.dart';
+export 'package:fast_ui_kit/ui/widgets/dropdown.dart';

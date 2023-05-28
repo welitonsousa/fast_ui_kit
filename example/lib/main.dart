@@ -92,7 +92,6 @@ class HomePage extends StatelessWidget {
                 minLines: 1,
                 label: "CPF",
                 validator: Mask.validations.cpf,
-                // validator: Zod().,
                 mask: [
                   Mask.cpf(),
                 ],
@@ -113,6 +112,18 @@ class HomePage extends StatelessWidget {
               const FastButton(
                 label: 'File Picker',
                 onPressed: FastPicker.picker,
+              ),
+              FastDropDown(
+                items: const [1, 2, 3, 4],
+                hint: 'Selecione o numero',
+                itemBuilder: (v) {
+                  return FastRow(
+                    children: [
+                      Icon(FastIcons.ant.profile),
+                      Text(v.toString()),
+                    ],
+                  );
+                },
               ),
               FastButton(
                 label: 'Dialog',
