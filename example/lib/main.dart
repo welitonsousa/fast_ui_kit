@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                     'Algo foi alterado com sucesso',
                     title: 'Sucesso',
                     type: MessageVariant.success,
-                    position: MessagePosition.top,
+                    position: MessagePosition.bottom,
                     style: Style.flat,
                   );
                 },
@@ -65,6 +65,7 @@ class HomePage extends StatelessWidget {
                   context.showMessage(
                     'Algo deu errado',
                     title: 'Erro',
+                    position: MessagePosition.bottom,
                     type: MessageVariant.error,
                     style: Style.raised,
                   );
@@ -110,12 +111,27 @@ class HomePage extends StatelessWidget {
               ),
               const FastButton(
                 label: 'File Picker',
-                background: Colors.blue,
                 onPressed: FastPicker.picker,
               ),
               FastButton(
                 label: 'Dialog',
-                onPressed: () {},
+                onPressed: () {
+                  context.dialog(
+                    FastDialog(
+                      title: 'Help',
+                      children: [
+                        const Text('Dialog'),
+                        const Text('Dialog'),
+                        const Text('Dialog'),
+                        FastButton(
+                          label: 'Cancel',
+                          onPressed: context.pop,
+                          background: Colors.red,
+                        ),
+                      ],
+                    ),
+                  );
+                },
               )
             ],
           ),
