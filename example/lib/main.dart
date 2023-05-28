@@ -1,5 +1,6 @@
 import 'package:example/pages/content_builder.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
+import 'package:fast_ui_kit/ui/widgets/animate.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,13 +34,16 @@ class HomePage extends StatelessWidget {
       ),
       body: FastContent(
         children: [
-          FastRow(
-            children: [
-              Icon(FastIcons.maki.airport, size: 40),
-              Icon(FastIcons.ant.CodeSandbox, size: 40),
-              Icon(FastIcons.awesome.facebook_square, size: 40),
-              Icon(FastIcons.elico.chrome, size: 40),
-            ],
+          FastAnimate(
+            type: FastAnimateType.fadeInDownBig,
+            child: FastRow(
+              children: [
+                Icon(FastIcons.maki.airport, size: 40),
+                Icon(FastIcons.ant.CodeSandbox, size: 40),
+                Icon(FastIcons.awesome.facebook_square, size: 40),
+                Icon(FastIcons.elico.chrome, size: 40),
+              ],
+            ),
           ),
           FastColumn(
             xGap: 10,
