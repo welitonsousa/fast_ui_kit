@@ -1,3 +1,4 @@
+import 'package:example/pages/content_builder.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Fast UI Kit'),
       ),
-      body: ListView(
+      body: FastContent(
         children: [
           FastRow(
             children: [
@@ -46,16 +47,24 @@ class HomePage extends StatelessWidget {
               FastButtonIcon(
                 icon: FastIcons.modernPictograms.pencil,
                 variant: ButtonVariant.outlined,
-                onPressed: () {},
-                loading: true,
+                loading: false,
+                onPressed: () {
+                  context.showMessage(
+                    'Algo foi alterado com sucesso',
+                    title: 'Sucesso',
+                    type: MessageVariant.success,
+                    position: MessagePosition.top,
+                    style: Style.flat,
+                  );
+                },
               ),
               FastButton(
                 label: 'Confirmar',
                 // variant: ButtonVariant.outlined,
                 onPressed: () {
                   context.showMessage(
-                    'Algo foi alterado com sucesso',
-                    title: 'Sucesso',
+                    'Algo deu errado',
+                    title: 'Erro',
                     type: MessageVariant.error,
                     style: Style.raised,
                   );
@@ -79,12 +88,35 @@ class HomePage extends StatelessWidget {
               ),
               FastFormField(
                 minLines: 1,
+                label: "CPF",
                 validator: Mask.validations.cpf,
-                // validator: Zod().cpf().build,
+                // validator: Zod().,
                 mask: [
                   Mask.cpf(),
                 ],
               ),
+              Text('Text H1', style: context.H1),
+              Text('Text H2', style: context.H2),
+              Text('Text H3', style: context.H3),
+              Text('Text H4', style: context.H4),
+              Text('Text H5', style: context.H5),
+              Text('Text H6', style: context.H6),
+              Text('Text P - Paragraph', style: context.p),
+              FastButton(
+                label: 'go to list builder',
+                onPressed: () {
+                  context.push(const PageContent());
+                },
+              ),
+              const FastButton(
+                label: 'File Picker',
+                background: Colors.blue,
+                onPressed: FastPicker.picker,
+              ),
+              FastButton(
+                label: 'Dialog',
+                onPressed: () {},
+              )
             ],
           ),
         ],

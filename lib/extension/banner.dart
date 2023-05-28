@@ -21,12 +21,15 @@ extension MessagesExt on BuildContext {
     MessageVariant? type,
     Color? background,
   }) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 60),
-      child: FastTopMessage(
-        message: message,
-        title: title,
-        backgroundColor: background ?? _bg(type),
+    return SizedBox(
+      width: MediaQuery.of(this).size.width,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 60),
+        child: FastTopMessage(
+          message: message,
+          title: title,
+          backgroundColor: background ?? _bg(type),
+        ),
       ),
     );
   }
@@ -43,27 +46,34 @@ extension MessagesExt on BuildContext {
         width: MediaQuery.of(this).size.width,
         padding: const EdgeInsets.all(10),
         color: background ?? _bg(type),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (position == MessagePosition.top) const SizedBox(height: 50),
-            if (title != null)
-              Text(
-                title,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: theme.textTheme.titleLarge?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -1,
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(this).size.width,
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (position == MessagePosition.top) const SizedBox(height: 50),
+                if (title != null)
+                  Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: -1,
+                    ),
+                  ),
+                Text(
+                  message,
+                  style:
+                      theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
                 ),
-              ),
-            Text(
-              message,
-              style: theme.textTheme.bodyLarge?.copyWith(color: Colors.white),
+                const SizedBox(height: 10)
+              ],
             ),
-            const SizedBox(height: 10)
-          ],
+          ),
         ),
       ),
     );

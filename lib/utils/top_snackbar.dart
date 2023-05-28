@@ -58,37 +58,41 @@ class FastTopMessage extends StatefulWidget {
 class _FastTopMessageState extends State<FastTopMessage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      width: MediaQuery.of(context).size.width - 20,
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: widget.backgroundColor ?? context.colors.primary.withOpacity(1),
-        borderRadius: BorderRadius.all(Radius.circular(widget.radius ?? 8)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (widget.title != null)
-            Text(
-              widget.title!,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: context.theme.textTheme.titleLarge?.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                letterSpacing: -1,
+    return Center(
+      child: Container(
+        height: 80,
+        width: MediaQuery.of(context).size.width - 20,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color:
+              widget.backgroundColor ?? context.colors.primary.withOpacity(1),
+          borderRadius: BorderRadius.all(Radius.circular(widget.radius ?? 8)),
+        ),
+        constraints: const BoxConstraints(maxWidth: 800),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (widget.title != null)
+              Text(
+                widget.title!,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: context.theme.textTheme.titleLarge?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: -1,
+                ),
               ),
+            Text(
+              widget.message,
+              style: context.theme.textTheme.bodyLarge
+                  ?.copyWith(color: Colors.white),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
             ),
-          Text(
-            widget.message,
-            style: context.theme.textTheme.bodyLarge
-                ?.copyWith(color: Colors.white),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -119,7 +123,7 @@ class _TopSnackBar extends StatefulWidget {
 
 class _TopSnackBarState extends State<_TopSnackBar>
     with SingleTickerProviderStateMixin {
-  late Animation offsetAnimation;
+  late Animation<Offset> offsetAnimation;
   late AnimationController animationController;
   double? topPosition;
 
@@ -182,7 +186,7 @@ class _TopSnackBarState extends State<_TopSnackBar>
       curve: Curves.linear,
       top: topPosition,
       child: SlideTransition(
-        position: offsetAnimation as Animation<Offset>,
+        position: offsetAnimation,
         child: _TapBounceContainer(
           child: widget.child,
           onTap: () {
@@ -264,7 +268,7 @@ class _TapBounceContainerState extends State<_TapBounceContainer>
     await _closeSnackBar();
   }
 
-  Future _closeSnackBar() async {
+  Future<void> _closeSnackBar() async {
     if (mounted) {
       _controller.reverse();
       await Future.delayed(animationDuration);

@@ -4,6 +4,7 @@ class FastColumn extends StatelessWidget {
   final List<Widget> children;
   final double xGap;
   final double yGap;
+  final bool extreme;
   final CrossAxisAlignment cross;
   final MainAxisAlignment main;
 
@@ -12,6 +13,7 @@ class FastColumn extends StatelessWidget {
     required this.children,
     this.xGap = 10,
     this.yGap = 10,
+    this.extreme = false,
     this.cross = CrossAxisAlignment.start,
     this.main = MainAxisAlignment.start,
   });
@@ -24,14 +26,14 @@ class FastColumn extends StatelessWidget {
         crossAxisAlignment: cross,
         mainAxisAlignment: main,
         children: [
-          SizedBox(height: yGap / 2),
+          if (extreme) SizedBox(height: yGap / 2),
           ...children
               .map((e) => Padding(
                     padding: EdgeInsets.symmetric(vertical: yGap / 2),
                     child: e,
                   ))
               .toList(),
-          SizedBox(height: yGap / 2),
+          if (extreme) SizedBox(height: yGap / 2),
         ],
       ),
     );

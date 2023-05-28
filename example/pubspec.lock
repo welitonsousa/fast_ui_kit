@@ -64,6 +64,22 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  ffi:
+    dependency: transitive
+    description:
+      name: ffi
+      sha256: ed5337a5660c506388a9f012be0288fb38b49020ce2b45fe1f8b8323fe429f99
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+  file_picker:
+    dependency: transitive
+    description:
+      name: file_picker
+      sha256: b1729fc96627dd44012d0a901558177418818d6bd428df59dcfeb594e5f66432
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -77,8 +93,21 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: "950e77c2bbe1692bc0874fc7fb491b96a4dc340457f4ea1641443d0a6c1ea360"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.15"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -138,6 +167,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  plugin_platform_interface:
+    dependency: transitive
+    description:
+      name: plugin_platform_interface
+      sha256: "6a2128648c854906c53fa8e33986fc0247a1116122f9534dd20e3ab9e16a32bc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.4"
   skeletons:
     dependency: transitive
     description:
@@ -207,14 +244,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  win32:
+    dependency: transitive
+    description:
+      name: win32
+      sha256: "6ca3aaab1790eeb1f5cad232e33d9c53ba66e884dd3e7686c4e730bffc45f1a3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   zod_validation:
     dependency: transitive
     description:
       name: zod_validation
-      sha256: "5223a7c99426a4c80203ba4ae58858648bb419d09e6ca66c23578fa5e47373de"
+      sha256: "3b39328d6a6a48d0b962b0dda90319a671906ff336409e8d161ec7043cbbdae5"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
 sdks:
   dart: ">=3.0.1 <4.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=3.3.0"

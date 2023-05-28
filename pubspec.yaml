@@ -8,11 +8,12 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  file_picker: ^5.3.2
   flutter:
     sdk: flutter
   mask: ^1.0.5
   skeletons: ^0.0.3
-  zod_validation: ^1.0.0
+  zod_validation: ^1.0.1
 
 dev_dependencies:
   flutter_test:
