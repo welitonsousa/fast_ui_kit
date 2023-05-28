@@ -22,7 +22,8 @@ class FastSearchAppBar extends PreferredSize {
               hint: hint,
               loading: loading,
             ),
-            preferredSize: const Size(double.infinity, kToolbarHeight + 5));
+            preferredSize: Size(double.infinity,
+                loading == true ? kToolbarHeight + 5 : kToolbarHeight));
 }
 
 class _SearchAppBar extends StatefulWidget {
