@@ -20,7 +20,7 @@ class FastFormField extends StatelessWidget {
   final List<TextInputFormatter>? mask;
   final int maxLines;
   final int minLines;
-
+  final double radius;
   const FastFormField({
     super.key,
     this.label,
@@ -36,6 +36,7 @@ class FastFormField extends StatelessWidget {
     this.textInputType,
     this.textInputAction,
     this.mask,
+    this.radius = 8,
     this.maxLines = 1,
     this.minLines = 1,
   });
@@ -56,7 +57,7 @@ class FastFormField extends StatelessWidget {
       validator: validator,
       autofocus: autoFocus ?? false,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
         labelText: label,
         hintText: hint,
         prefixIcon: prefix,

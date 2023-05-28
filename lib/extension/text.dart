@@ -32,7 +32,7 @@ extension TextExt on BuildContext {
         letterSpacing: 0.15,
       );
 
-  get p => const TextStyle(
+  TextStyle get p => const TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,

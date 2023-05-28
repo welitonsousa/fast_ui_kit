@@ -1,6 +1,5 @@
 import 'package:example/pages/content_builder.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
-import 'package:fast_ui_kit/ui/widgets/animate.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -128,6 +127,11 @@ class HomePage extends StatelessWidget {
                     ],
                   );
                 },
+              ),
+              FastButtonGroup<Style>(
+                callback: (v) {},
+                values: Style.values,
+                initial: const [],
               ),
               FastButton(
                 label: 'Dialog',

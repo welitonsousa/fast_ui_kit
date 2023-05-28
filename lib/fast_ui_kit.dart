@@ -3,6 +3,7 @@ library fast_ui_kit;
 export 'package:fast_ui_kit/icons/icons.dart';
 export 'package:fast_ui_kit/utils/picker.dart';
 export 'package:fast_ui_kit/utils/debounce.dart';
+export 'package:fast_ui_kit/ui/theme/fast_theme.dart';
 
 export 'package:fast_ui_kit/extension/banner.dart';
 export 'package:fast_ui_kit/extension/context.dart';
@@ -11,7 +12,6 @@ export 'package:fast_ui_kit/extension/navigation.dart';
 
 export 'package:fast_ui_kit/ui/widgets/button.dart';
 export 'package:fast_ui_kit/ui/widgets/button_icons.dart';
-export 'package:fast_ui_kit/ui/theme/fast_theme.dart';
 export 'package:fast_ui_kit/ui/widgets/avatar.dart';
 export 'package:fast_ui_kit/ui/widgets/skeleton.dart';
 export 'package:fast_ui_kit/ui/widgets/img.dart';
@@ -22,3 +22,5 @@ export 'package:fast_ui_kit/ui/widgets/content.dart';
 export 'package:fast_ui_kit/ui/widgets/dialog.dart';
 export 'package:fast_ui_kit/ui/widgets/search_app_bar.dart';
 export 'package:fast_ui_kit/ui/widgets/dropdown.dart';
+export 'package:fast_ui_kit/ui/widgets/animate.dart';
+export 'package:fast_ui_kit/ui/widgets/button_group.dart';

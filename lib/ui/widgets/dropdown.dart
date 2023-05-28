@@ -8,11 +8,13 @@ class FastDropDown<T> extends StatelessWidget {
   final void Function(T?)? onChanged;
   final Widget Function(T)? itemBuilder;
   final T? value;
+  final double radius;
 
   const FastDropDown({
     super.key,
     this.hint,
     this.value,
+    this.radius = 8,
     this.onChanged,
     this.validation,
     this.itemBuilder,
@@ -28,9 +30,9 @@ class FastDropDown<T> extends StatelessWidget {
       hint: hint != null ? Text(hint!) : null,
       enableFeedback: true,
       focusColor: Colors.transparent,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         filled: false,
-        border: OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
       ),
       items: items.map((e) {
         return DropdownMenuItem(

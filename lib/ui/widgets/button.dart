@@ -13,16 +13,17 @@ class FastButton extends StatefulWidget {
   final double? elevation;
   final ButtonVariant variant;
 
-  const FastButton(
-      {super.key,
-      required this.label,
-      this.onPressed,
-      this.loading,
-      this.background,
-      this.color,
-      this.radius,
-      this.elevation,
-      this.variant = ButtonVariant.contained});
+  const FastButton({
+    super.key,
+    required this.label,
+    this.onPressed,
+    this.loading,
+    this.background,
+    this.color,
+    this.radius,
+    this.elevation,
+    this.variant = ButtonVariant.contained,
+  });
 
   @override
   State<FastButton> createState() => _FastButtonState();
@@ -67,7 +68,11 @@ class _FastButtonState extends State<FastButton> {
     return SizedBox(
       height: 50,
       child: ElevatedButton(
-        onPressed: widget.onPressed,
+        onPressed: widget.onPressed != null
+            ? () {
+                if (!(widget.loading ?? false)) widget.onPressed?.call();
+              }
+            : null,
         style: style,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
