@@ -45,7 +45,7 @@ class _FastButtonState extends State<FastButton> {
   }
 
   Color get bgColor {
-    if (widget.color != null) return widget.color!;
+    if (widget.background != null) return widget.background!;
     if (widget.variant == ButtonVariant.outlined) return Colors.transparent;
     return widget.background ?? context.colors.primary;
   }

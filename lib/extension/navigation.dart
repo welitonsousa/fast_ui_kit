@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 extension NavigationExt on BuildContext {
+  Future<T?> dialog<T>(Widget page, {bool dismissible = true}) async {
+    return await showDialog<T?>(
+      context: this,
+      builder: (_) => page,
+      barrierDismissible: dismissible,
+    );
+  }
+
   void push(Widget page) {
     Navigator.of(this).push(
       MaterialPageRoute(builder: (_) => page),

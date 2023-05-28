@@ -20,8 +20,10 @@ class FastRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: xGap),
+      padding: EdgeInsets.symmetric(vertical: yGap),
       child: Row(
+        mainAxisAlignment: main,
+        crossAxisAlignment: cross,
         children: [
           if (extreme) SizedBox(width: xGap / 2),
           ...children

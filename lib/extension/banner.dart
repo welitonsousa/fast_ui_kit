@@ -126,7 +126,6 @@ extension MessagesExt on BuildContext {
       );
     } else {
       ScaffoldMessenger.of(this).clearSnackBars();
-
       ScaffoldMessenger.of(this).showSnackBar(
         SnackBar(
           padding: EdgeInsets.zero,
