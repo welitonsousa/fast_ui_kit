@@ -1,4 +1,5 @@
 import 'package:example/pages/content_builder.dart';
+import 'package:example/pages/table_page.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -132,6 +133,12 @@ class HomePage extends StatelessWidget {
                 callback: (v) {},
                 values: Style.values,
                 initial: const [],
+              ),
+              FastButton(
+                label: 'table page',
+                onPressed: () {
+                  context.push(const TablePage());
+                },
               ),
               FastButton(
                 label: 'Dialog',

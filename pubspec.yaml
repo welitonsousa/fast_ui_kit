@@ -12,6 +12,7 @@ dependencies:
   file_picker: ^5.3.2
   flutter:
     sdk: flutter
+  horizontal_data_table: ^4.2.0
   mask: ^1.0.5
   skeletons: ^0.0.3
   zod_validation: ^1.0.1

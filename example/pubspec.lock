@@ -119,6 +119,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  horizontal_data_table:
+    dependency: transitive
+    description:
+      name: horizontal_data_table
+      sha256: "32d9a29aad16caeb94d49d2310a041a8561d182719c16a21b360d5d8c5e0b2ad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
   js:
     dependency: transitive
     description:
@@ -167,6 +175,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -183,6 +199,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  provider:
+    dependency: transitive
+    description:
+      name: provider
+      sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.5"
   skeletons:
     dependency: transitive
     description:

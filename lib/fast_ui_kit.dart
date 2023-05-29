@@ -24,3 +24,4 @@ export 'package:fast_ui_kit/ui/widgets/search_app_bar.dart';
 export 'package:fast_ui_kit/ui/widgets/dropdown.dart';
 export 'package:fast_ui_kit/ui/widgets/animate.dart';
 export 'package:fast_ui_kit/ui/widgets/button_group.dart';
+export 'package:fast_ui_kit/ui/widgets/table.dart';
