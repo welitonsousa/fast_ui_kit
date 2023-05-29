@@ -1,5 +1,4 @@
 import 'package:fast_ui_kit/fast_ui_kit.dart';
-import 'package:fast_ui_kit/ui/widgets/animate.dart';
 import 'package:flutter/material.dart';
 
 class FastSearchAppBar extends PreferredSize {
@@ -14,7 +13,7 @@ class FastSearchAppBar extends PreferredSize {
     this.onSearch,
     this.debounceTime,
     required this.title,
-    this.hint = 'Search...',
+    this.hint,
     this.loading,
     this.animated = true,
   }) : super(

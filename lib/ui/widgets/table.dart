@@ -77,7 +77,6 @@ class FastTable extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List.generate(rows[i].length, (index) {
-                  print(header[index].width);
                   return Container(
                       padding: const EdgeInsets.all(10),
                       width: header[index].width,

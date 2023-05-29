@@ -140,6 +140,12 @@ class HomePage extends StatelessWidget {
                   context.push(const TablePage());
                 },
               ),
+              const FastAudio(
+                  url:
+                      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'),
+              // FastAudio(),
+              // FastAudio(),
+              // FastAudio(),
               FastButton(
                 label: 'Dialog',
                 onPressed: () {
@@ -150,6 +156,9 @@ class HomePage extends StatelessWidget {
                         const Text('Dialog'),
                         const Text('Dialog'),
                         const Text('Dialog'),
+                        const FastAudio(
+                            url:
+                                'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'),
                         FastButton(
                           label: 'Cancel',
                           onPressed: context.pop,
