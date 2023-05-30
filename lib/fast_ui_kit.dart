@@ -9,6 +9,7 @@ export 'package:fast_ui_kit/extension/banner.dart';
 export 'package:fast_ui_kit/extension/context.dart';
 export 'package:fast_ui_kit/extension/text.dart';
 export 'package:fast_ui_kit/extension/navigation.dart';
+export 'package:fast_ui_kit/extension/size.dart';
 
 export 'package:fast_ui_kit/ui/widgets/button.dart';
 export 'package:fast_ui_kit/ui/widgets/button_icons.dart';
@@ -26,3 +27,4 @@ export 'package:fast_ui_kit/ui/widgets/animate.dart';
 export 'package:fast_ui_kit/ui/widgets/button_group.dart';
 export 'package:fast_ui_kit/ui/widgets/table.dart';
 export 'package:fast_ui_kit/ui/widgets/audio.dart';
+export 'package:fast_ui_kit/ui/widgets/form_field_file.dart';

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:file_picker/file_picker.dart';
 
 enum FastPickerType {
@@ -15,8 +16,17 @@ enum FastPickerType {
   }
 }
 
+class FileData {
+  String path;
+  Uint8List data;
+  FileData({
+    required this.path,
+    required this.data,
+  });
+}
+
 class FastPicker {
-  static Future<List<Uint8List>?> picker({
+  static Future<List<FileData>?> picker({
     FastPickerType type = FastPickerType.image,
     List<String>? accept,
     bool multiple = false,
@@ -28,9 +38,12 @@ class FastPicker {
         allowedExtensions: accept,
       );
       if (result != null) {
-        return result.files.map<Uint8List>((e) {
+        return result.files.map<FileData>((e) {
           final file = File(e.path!);
-          return file.readAsBytesSync();
+          return FileData(
+            data: file.readAsBytesSync(),
+            path: file.path,
+          );
         }).toList();
       }
     } on UnimplementedError {

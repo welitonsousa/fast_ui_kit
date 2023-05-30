@@ -17,7 +17,7 @@ class FastAudio extends StatefulWidget {
 }
 
 class _FastAudioState extends State<FastAudio> {
-  final player = AudioPlayer();
+  final player = AudioPlayer(playerId: DateTime.now().toIso8601String());
 
   @override
   void initState() {

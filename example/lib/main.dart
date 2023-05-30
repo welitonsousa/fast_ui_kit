@@ -49,6 +49,12 @@ class HomePage extends StatelessWidget {
             xGap: 10,
             yGap: 10,
             children: [
+              const FastFormFieldFile(),
+              const FastFormFieldFile(showFileType: ShowFileType.bigIcon),
+              const FastFormFieldFile(
+                  showFileType: ShowFileType.bigIconOrPreviewWhenImage,
+                  accepts: ['pdf']),
+              const FastFormFieldFile(showFileType: ShowFileType.iconAndName),
               FastButtonIcon(
                 icon: FastIcons.modernPictograms.pencil,
                 variant: ButtonVariant.outlined,
@@ -143,9 +149,6 @@ class HomePage extends StatelessWidget {
               const FastAudio(
                   url:
                       'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'),
-              // FastAudio(),
-              // FastAudio(),
-              // FastAudio(),
               FastButton(
                 label: 'Dialog',
                 onPressed: () {
