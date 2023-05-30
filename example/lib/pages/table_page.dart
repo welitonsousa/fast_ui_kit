@@ -26,7 +26,7 @@ class TablePage extends StatelessWidget {
         rows: [
           ...List.generate(100, (index) {
             return [
-              TableItem(),
+              TableItem(title: 'Nome $index'),
               TableItem(title: '23'),
               TableItem(title: 'Masculino'),
               TableItem(title: 'Masculino asd as s s as'),

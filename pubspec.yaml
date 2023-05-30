@@ -17,7 +17,8 @@ dependencies:
   skeletons: ^0.0.3
   zod_validation: ^1.0.1
   audioplayers: ^4.1.0
-
+  scrollable_clean_calendar: ^1.4.1
+  uuid: ^3.0.7
   # audio_in_app: ^1.0.1
 # dependency_overrides:
 #   # audioplayers: ^4.0.1

@@ -57,7 +57,7 @@ class FastFormFieldFile extends StatelessWidget {
     super.key,
     this.onChanged,
     this.accepts,
-    this.hint = 'file',
+    this.hint = 'File',
     this.showFileType = ShowFileType.iconAndNameOrPreviewWhenImage,
     this.isRequired = false,
     this.showRemoveButton = true,
@@ -141,8 +141,7 @@ class FastFormFieldFile extends StatelessWidget {
                                               ?.copyWith(
                                             color: field.hasError
                                                 ? Colors.red[900]!
-                                                : Colors.black87
-                                                    .withOpacity(.7),
+                                                : null,
                                           )),
                                   if (field.value == null)
                                     Text(hint,
@@ -150,7 +149,7 @@ class FastFormFieldFile extends StatelessWidget {
                                             ?.copyWith(
                                           color: field.hasError
                                               ? Colors.red[900]!
-                                              : Colors.black87.withOpacity(.7),
+                                              : null,
                                         )),
                                 ],
                               ),

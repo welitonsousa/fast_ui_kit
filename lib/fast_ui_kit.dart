@@ -28,3 +28,4 @@ export 'package:fast_ui_kit/ui/widgets/button_group.dart';
 export 'package:fast_ui_kit/ui/widgets/table.dart';
 export 'package:fast_ui_kit/ui/widgets/audio.dart';
 export 'package:fast_ui_kit/ui/widgets/form_field_file.dart';
+export 'package:fast_ui_kit/ui/widgets/calendar.dart';

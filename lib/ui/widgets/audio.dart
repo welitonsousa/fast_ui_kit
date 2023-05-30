@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class FastAudio extends StatefulWidget {
   final String? url;
@@ -17,7 +18,7 @@ class FastAudio extends StatefulWidget {
 }
 
 class _FastAudioState extends State<FastAudio> {
-  final player = AudioPlayer(playerId: DateTime.now().toIso8601String());
+  final AudioPlayer player = AudioPlayer(playerId: const Uuid().v1());
 
   @override
   void initState() {

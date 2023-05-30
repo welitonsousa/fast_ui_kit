@@ -22,9 +22,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,9 +151,12 @@ class HomePage extends StatelessWidget {
                   context.push(const TablePage());
                 },
               ),
+              const FastCalendar(
+                rangeMode: false,
+              ),
               const FastAudio(
                   url:
-                      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'),
+                      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'),
               FastButton(
                 label: 'Dialog',
                 onPressed: () {
@@ -170,6 +178,8 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   );
+
+                  setState(() {});
                 },
               )
             ],
