@@ -25,7 +25,7 @@ class FileData {
   });
 }
 
-class FastPicker {
+class FastPickerService {
   static Future<List<FileData>?> picker({
     FastPickerType type = FastPickerType.image,
     List<String>? accept,

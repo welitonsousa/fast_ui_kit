@@ -1,9 +1,13 @@
 library fast_ui_kit;
 
-export 'package:fast_ui_kit/icons/icons.dart';
-export 'package:fast_ui_kit/utils/picker.dart';
-export 'package:fast_ui_kit/utils/debounce.dart';
 export 'package:fast_ui_kit/ui/theme/fast_theme.dart';
+
+export 'package:fast_ui_kit/icons/icons.dart';
+export 'package:fast_ui_kit/utils/debounce.dart';
+export 'package:fast_ui_kit/utils/uuid.dart';
+
+export 'package:fast_ui_kit/services/picker.dart';
+export 'package:fast_ui_kit/services/audio_service.dart';
 
 export 'package:fast_ui_kit/extension/banner.dart';
 export 'package:fast_ui_kit/extension/context.dart';

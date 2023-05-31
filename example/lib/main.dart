@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const FastButton(
                 label: 'File Picker',
-                onPressed: FastPicker.picker,
+                onPressed: FastPickerService.picker,
               ),
               FastDropDown(
                 items: const [1, 2, 3, 4],

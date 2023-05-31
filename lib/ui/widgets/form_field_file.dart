@@ -1,8 +1,5 @@
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
-export 'package:mask/mask.dart';
-export 'package:mask/validations/validations.dart';
-export 'package:zod_validation/zod_validation.dart';
 
 enum ShowFileType {
   iconAndName,
@@ -49,7 +46,6 @@ class FastFormFieldFile extends StatelessWidget {
   final bool showRemoveButton;
   final ShowFileType showFileType;
   final void Function(FileData?)? onChanged;
-  final bool? isRequired;
   final double radius;
   final List<String>? accepts;
   final String? Function(FileData?)? validator;
@@ -59,7 +55,6 @@ class FastFormFieldFile extends StatelessWidget {
     this.accepts,
     this.hint = 'File',
     this.showFileType = ShowFileType.iconAndNameOrPreviewWhenImage,
-    this.isRequired = false,
     this.showRemoveButton = true,
     this.validator,
     this.radius = 8,
@@ -76,7 +71,7 @@ class FastFormFieldFile extends StatelessWidget {
         return InkWell(
           borderRadius: BorderRadius.circular(radius),
           onTap: () async {
-            final files = await FastPicker.picker(
+            final files = await FastPickerService.picker(
               accept: accepts,
               type: accepts != null
                   ? FastPickerType.custom
