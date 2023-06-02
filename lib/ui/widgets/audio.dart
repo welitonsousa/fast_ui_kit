@@ -200,6 +200,7 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
             ),
             ChoiceChip(
               selected: false,
+              padding: EdgeInsets.zero,
               backgroundColor: context.button.primaryContainer,
               side: BorderSide(color: context.colors.primary),
               pressElevation: 10,

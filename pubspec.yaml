@@ -19,6 +19,7 @@ dependencies:
   audioplayers: ^4.1.0
   scrollable_clean_calendar: ^1.4.1
   uuid: ^3.0.7
+  card_swiper: ^2.0.4
   # audio_in_app: ^1.0.1
 # dependency_overrides:
 #   # audioplayers: ^4.0.1

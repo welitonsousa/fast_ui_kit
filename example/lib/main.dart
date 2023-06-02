@@ -1,6 +1,7 @@
 import 'package:example/pages/content_builder.dart';
 import 'package:example/pages/table_page.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
+import 'package:fast_ui_kit/ui/widgets/carousel.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = FastTheme(seed: Colors.purple);
+    final theme = FastTheme(seed: Colors.green);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       darkTheme: theme.dark,
@@ -50,6 +51,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          FastCarousel(
+              itemCount: 30,
+              height: 200,
+              fraction: .4,
+              scale: .7,
+              itemBuilder: (c, i) {
+                return FastImg(path: 'https://picsum.photos/200/300?random=$i');
+              }),
           FastColumn(
             xGap: 10,
             yGap: 10,

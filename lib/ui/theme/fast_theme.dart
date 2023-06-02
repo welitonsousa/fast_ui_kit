@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class FastTheme {
   final Color seed;
-  FastTheme({required this.seed});
+  final String? font;
+  FastTheme({required this.seed, this.font});
 
   ColorScheme _scheme(Brightness mode) => ColorScheme.fromSeed(
         seedColor: seed,
@@ -14,6 +15,7 @@ class FastTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: _scheme(mode),
+      fontFamily: font,
       appBarTheme: const AppBarTheme(centerTitle: true),
     );
   }
