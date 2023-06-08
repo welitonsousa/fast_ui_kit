@@ -1,39 +1,200 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+<p align="center">
+<img width="400" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/images/fast.png">
+</p>
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+### Access the complete documentation 
+[www.fast-ui-kit.vercel.app](https://fast-ui-kit.vercel.app)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+### Simple Implementation !
 
-## Features
+<p>
+The "Fast UI Kit" is a Flutter package that aims to simplify application development by providing a collection of ready-to-use components. Similar to Quasar, it offers a set of components that can be used to quickly and efficiently create user interfaces while maintaining a consistent and elegant design.
+</p>
+<p>
+The main goal of the "Fast UI Kit" is to expedite the development process by allowing developers to utilize pre-defined components instead of building each element from scratch. This saves time and effort while helping to maintain a cohesive visual appearance throughout the application.
+</p>
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+<p align="center">
+  <img width="200" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/images/ui.png">
+</p>
 
-## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+✅ Dark Mode suporte
+✅ Color scheme suporte
 
-## Usage
+The components screenshots with colors scheme green selected
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+#### example of button
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/button.png">
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/button_outlined.png">
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/button_outlined_loading.gif">
+</p>
+<br>
+
+#### example of button group
+<p>
+  <img width="400" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/button_group.gif">
+</p>
+<br>
+
+
+#### example of audio player
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/audio.png">
+</p>
+<br>
+
+#### example of calendar
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/calendar.png">
+</p>
+<br>
+
+#### example of carousel
+<p>
+  <img width="400" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/carousel.gif">
+</p>
+<br>
+
+#### example of typographic
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/text.png">
+</p>
+<br>
+
+#### example of input picker
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/file.gif">
+</p>
+<br>
+
+#### example of column
+
+Use FastColumn to have a vertical gap between components
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/column.png">
+</p>
+<br>
+
+
+
+### Define your theme
 
 ```dart
-const like = 'sample';
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
+
+  final theme = FastTheme(seed: Colors.green);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      darkTheme: theme.dark,
+      theme: theme.light,
+      home: const HomePage(),
+    );
+  }
+}
 ```
 
-## Additional information
+### Components
+- FastColum
+- FastRow
+- FastImg
+- FastAvatar
+- FastAnimate
+- FastCalendar
+- FastTable
+- FastSkeleton
+- FastSearchAppBar
+- FastFormField
+- FastFormFieldFile
+- FastDropDown
+- FastDialog
+- FastContent
+- FastCarousel
+- FastButton
+- FastButtonIcon
+- FastButtonGroup
+- FastAudio
+- FastIcon -> `Icon(FastIcons.library.icon)`
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### Extension
+<span>
+Typographic
+
+- context.H1
+- context.H2
+- context.H3
+- context.H4
+- context.H5
+- context.H6
+- context.P
+
+<br>
+Size
+
+- context.height
+- context.width
+
+<br>
+Navigation
+
+- context.dialog
+- context.push
+- context.pushNamed
+- context.pushReplacement
+- context.pushReplacementNamed
+- context.pushAndRemoveUntil
+- context.pushAndRemoveUntilNamed
+- pop
+- popUntil
+- popUntilNamed
+
+<br>
+Style
+
+- context.colors  `color scheme`
+- context.theme `current theme`
+- context.button `button scheme of colors`
+- context.brightness `brightness of application`
+
+<br>
+Message
+
+- context.showMessage
+
+example:
+```dart
+context.showMessage(
+  'Update user successful',
+  title: 'Sucesso', //optional field
+  type: MessageVariant.success, //optional field
+  position: MessagePosition.top, //optional field
+  style: Style.flat, //optional field
+);
+```
+
+### Utils
+- FastDebounce
+- FastUUID
+
+### Services
+- FastAudioService
+- FastPickerService
+
+
+<br>
+
+<a target="_blank" href="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/example/lib/main.dart">📄 Access the example file</a>
+
+<a target="_blank" href="https://fast-ui-kit.vercel.app">📚 Access the complete documentation</a>
+
+
+<br>
+<br>
+<p align="center">
+   Feito com ❤️ by <a target="_blank" href="https://welitonsousa.shop"><b>Weliton Sousa</b></a>
+</p>

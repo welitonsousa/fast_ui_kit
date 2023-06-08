@@ -5,17 +5,17 @@ import 'package:fast_ui_kit/ui/widgets/carousel.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final theme = FastTheme(seed: Colors.green);
 
   @override
   Widget build(BuildContext context) {
-    final theme = FastTheme(seed: Colors.green);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       darkTheme: theme.dark,
       theme: theme.light,
       home: const HomePage(),
@@ -78,14 +78,15 @@ class _HomePageState extends State<HomePage> {
                     'Algo foi alterado com sucesso',
                     title: 'Sucesso',
                     type: MessageVariant.success,
-                    position: MessagePosition.bottom,
+                    position: MessagePosition.top,
                     style: Style.flat,
                   );
                 },
               ),
               FastButton(
                 label: 'Confirmar',
-                // variant: ButtonVariant.outlined,
+                loading: true,
+                variant: ButtonVariant.outlined,
                 onPressed: () {
                   context.showMessage(
                     'Algo deu errado',
@@ -120,7 +121,11 @@ class _HomePageState extends State<HomePage> {
                   Mask.cpf(),
                 ],
               ),
-              Text('Text H1', style: context.H1),
+              FastAnimate(
+                type: FastAnimateType.fadeInLeftBig,
+                duration: const Duration(seconds: 1),
+                child: Text('Text H1', style: context.H1),
+              ),
               Text('Text H2', style: context.H2),
               Text('Text H3', style: context.H3),
               Text('Text H4', style: context.H4),
@@ -149,9 +154,16 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              FastButtonGroup<Style>(
+              FastButtonGroup<String>(
                 callback: (v) {},
-                values: Style.values,
+                values: const ['Test 1', 'Test 2', 'Test 3', 'Test 4'],
+                initial: const [],
+              ),
+              const Divider(),
+              FastButtonGroup<String>(
+                callback: (v) {},
+                multiple: false,
+                values: const ['Test 1', 'Test 2', 'Test 3', 'Test 4'],
                 initial: const [],
               ),
               FastButton(
@@ -161,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const FastCalendar(
-                rangeMode: false,
+                rangeMode: true,
               ),
               const FastAudio(
                   url:
