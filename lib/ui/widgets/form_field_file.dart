@@ -162,16 +162,26 @@ class FastFormFieldFile extends StatelessWidget {
                                           size: showFileType.iconSize),
                                   if (field.value != null)
                                     if (showFileType.showName(isImage))
-                                      Text(
-                                          field.value?.path.split('/').last ??
-                                              hint,
-                                          style: context
-                                              .theme.textTheme.bodyLarge
-                                              ?.copyWith(
-                                            color: field.hasError
-                                                ? Colors.red[900]!
-                                                : null,
-                                          )),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 30),
+                                          child: Text(
+                                              field.value?.path
+                                                      .split('/')
+                                                      .last ??
+                                                  hint,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              style: context
+                                                  .theme.textTheme.bodyLarge
+                                                  ?.copyWith(
+                                                color: field.hasError
+                                                    ? Colors.red[900]!
+                                                    : null,
+                                              )),
+                                        ),
+                                      ),
                                   if (field.value == null)
                                     Text(hint,
                                         style: context.theme.textTheme.bodyLarge

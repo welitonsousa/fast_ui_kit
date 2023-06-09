@@ -44,6 +44,7 @@ class FileData {
 ///   accept: ['jpg', 'png'],
 ///   multiple: true,
 /// );
+/// ```
 class FastPickerService {
   static Future<List<FileData>?> picker({
     FastPickerType type = FastPickerType.image,
