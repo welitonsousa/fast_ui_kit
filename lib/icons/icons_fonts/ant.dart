@@ -1,4 +1,5 @@
 import 'package:fast_ui_kit/icons/data.dart';
+// ignore_for_file: non_constant_identifier_names
 
 /// AntDesign Icons
 class AntDesign {
