@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get font awesome 5 icons
 class FontAwesome5Icon {
   final faucet = const FastIconsData.fontAwesomeIcon5(0xe800);
   final trailer = const FastIconsData.fontAwesomeIcon5(0xe801);

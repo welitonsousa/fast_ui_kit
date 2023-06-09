@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// Simple Line Icons
 class SimpleLineIcons {
   final user = const FastIconsData.simpleLineIcons(57349);
   final people = const FastIconsData.simpleLineIcons(57345);

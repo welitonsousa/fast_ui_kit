@@ -2,12 +2,16 @@ import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:fast_ui_kit/utils/top_snackbar.dart';
 import 'package:flutter/material.dart';
 
+/// message type
 enum MessageVariant { success, error, info }
 
+/// message position
 enum MessagePosition { top, bottom }
 
+/// message style
 enum Style { flat, raised }
 
+/// use this extension to show message
 extension MessagesExt on BuildContext {
   Color _bg(MessageVariant? type) {
     if (type == MessageVariant.error) return Colors.red;
@@ -104,6 +108,7 @@ extension MessagesExt on BuildContext {
     );
   }
 
+  /// show message
   void showMessage(
     String message, {
     String? title,

@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// Linecons Icons
 class Linecons {
   final music = const FastIconsData.lineCons(0xe800);
   final search = const FastIconsData.lineCons(0xe801);

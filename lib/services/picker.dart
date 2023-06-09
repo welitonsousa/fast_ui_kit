@@ -3,6 +3,13 @@ import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 
+/// use this enum to select the type of file
+/// [any] any file
+/// [media] any media file
+/// [image] only image file
+/// [video] only video file
+/// [audio] only audio file
+/// [custom] custom file type
 enum FastPickerType {
   any,
   media,
@@ -16,6 +23,8 @@ enum FastPickerType {
   }
 }
 
+/// use this class to get file data
+/// [path] is the file path
 class FileData {
   String path;
   Uint8List data;
@@ -25,6 +34,16 @@ class FileData {
   });
 }
 
+/// use this service to pick files from device
+///
+/// example:
+///
+/// ```dart
+/// final files = await FastPickerService.picker(
+///   type: FastPickerType.image,
+///   accept: ['jpg', 'png'],
+///   multiple: true,
+/// );
 class FastPickerService {
   static Future<List<FileData>?> picker({
     FastPickerType type = FastPickerType.image,

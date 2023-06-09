@@ -26,6 +26,13 @@ import 'package:fast_ui_kit/icons/icons_fonts/weather_icons.dart';
 import 'package:fast_ui_kit/icons/icons_fonts/web_symbols_icons.dart';
 import 'package:fast_ui_kit/icons/icons_fonts/zocial.dart';
 
+/// This class is used to access the icons of the font package.
+///
+/// Example:
+///
+/// ```dart
+/// Icon(FastIcons.awesome5.addressBook)
+/// ```
 class FastIcons {
   FastIcons._();
 

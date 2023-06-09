@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get font awesome 5 brands icons
 class FontAwesome5Brands {
   final $500px = const FastIconsData.fontAwesome5Brands(62062);
   final accessible_icon = const FastIconsData.fontAwesome5Brands(62312);

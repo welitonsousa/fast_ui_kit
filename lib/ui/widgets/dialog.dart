@@ -6,6 +6,32 @@ class FastDialog extends StatelessWidget {
   final String? title;
   final List<Widget> children;
   final double radius;
+
+  /// [FastDialog] is a widget that can be used to create a dialog with a
+  /// custom width and radius.
+  ///
+  /// [maxWidth] is the maximum width of the dialog.
+  ///
+  /// [radius] is the radius of the dialog.
+  ///
+  /// [title] is the title of the dialog.
+  ///
+  /// [children] is the content of the dialog.
+  ///
+  /// [key] is the key of the widget.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// FastDialog(
+  ///   title: 'Title',
+  ///   maxWidth: 500,
+  ///   radius: 20,
+  ///   children: [
+  ///     Text('Content'),
+  ///   ],
+  /// )
+  /// ```
   const FastDialog({
     super.key,
     required this.children,

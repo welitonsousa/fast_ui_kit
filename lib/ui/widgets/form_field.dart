@@ -21,6 +21,16 @@ class FastFormField extends StatelessWidget {
   final int maxLines;
   final int minLines;
   final double radius;
+
+  /// FastFormField
+  ///
+  /// ```dart
+  /// FastFormField(
+  ///   label: 'Label',
+  ///   mask: [Mask.maskPhone],
+  ///   validator: Zod().phone().build,
+  /// )
+  /// ```
   const FastFormField({
     super.key,
     this.label,

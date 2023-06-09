@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get [ModernPictograms] icons
 class ModernPictograms {
   final search = const FastIconsData.modernPictograms(0xe800);
   final mail = const FastIconsData.modernPictograms(0xe801);

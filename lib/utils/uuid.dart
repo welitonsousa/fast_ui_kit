@@ -1,5 +1,12 @@
 import 'package:uuid/uuid.dart';
 
+/// use this class to generate uuid
+///
+/// example:
+///
+/// ```dart
+/// final uuid = FastUUID.v4();
+/// ```
 class FastUUID {
   FastUUID._();
 

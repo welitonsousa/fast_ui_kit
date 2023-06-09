@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// AntDesign Icons
 class AntDesign {
   final stepforward = const FastIconsData.antDesign(58880);
   final stepbackward = const FastIconsData.antDesign(58881);

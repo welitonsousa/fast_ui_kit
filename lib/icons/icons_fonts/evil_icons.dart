@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// EvilIcons is a collection of 70+ icons with a simple style.
 class EvilIcons {
   final archive = const FastIconsData.evilIcons(61696);
   final arrow_down = const FastIconsData.evilIcons(61697);

@@ -7,6 +7,31 @@ class FastRow extends StatelessWidget {
   final CrossAxisAlignment cross;
   final MainAxisAlignment main;
   final bool extreme;
+
+  /// [FastRow] is a widget that allows you to create a row with a gap between the widgets.
+  ///
+  /// [children] is a list of widgets that will be displayed in the row.
+  ///
+  /// [xGap] is the horizontal gap between the widgets.
+  ///
+  /// [yGap] is the vertical gap between the widgets.
+  ///
+  /// [cross] is the alignment of the widgets in the row.
+  ///
+  /// [main] is the alignment of the row.
+  ///
+  /// [extreme] is a boolean that defines whether the row will have a gap at the beginning and end.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// FastRow(
+  ///  children: [
+  ///     Icon(FastIcons.ant.profile),
+  ///     Text(v.toString()),
+  ///   ],
+  /// ),
+  /// ```
   const FastRow({
     super.key,
     required this.children,

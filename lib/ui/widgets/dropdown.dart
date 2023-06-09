@@ -10,6 +10,23 @@ class FastDropDown<T> extends StatelessWidget {
   final T? value;
   final double radius;
 
+  /// use this widget to create a dropdown
+  ///
+  /// example:
+  ///
+  /// ```dart
+  /// FastDropDown(
+  ///   items: const [1, 2, 3, 4],
+  ///   hint: 'Selecione o numero',
+  ///   itemBuilder: (v) {
+  ///    return FastRow(
+  ///     children: [
+  ///       Icon(FastIcons.ant.profile),
+  ///       Text(v.toString()),
+  ///     ],
+  ///   );},
+  /// ),
+  /// ```
   const FastDropDown({
     super.key,
     this.hint,

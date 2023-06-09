@@ -1,6 +1,8 @@
 import 'package:fast_ui_kit/icons/data.dart';
 import 'package:flutter/widgets.dart';
 
+/// use this class to get web symbols icons
+///
 class WebSymbols {
   final IconData search = const FastIconsData.webSymbols(0xe800);
   final IconData mail = const FastIconsData.webSymbols(0xe801);

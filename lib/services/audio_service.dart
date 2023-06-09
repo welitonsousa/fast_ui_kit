@@ -1,5 +1,12 @@
 import 'package:audioplayers/audioplayers.dart';
 
+/// use this service to play audio from url
+///
+/// example:
+///
+/// ```dart
+/// final id = await FastAudioService.i.play('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+/// ```
 class FastAudioService {
   FastAudioService._();
   static FastAudioService? _instance;

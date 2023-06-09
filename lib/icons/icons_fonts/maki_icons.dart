@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get maki icons
 class Maki {
   final aboveground_rail = const FastIconsData.maki(0xe800);
   final airfield = const FastIconsData.maki(0xe801);

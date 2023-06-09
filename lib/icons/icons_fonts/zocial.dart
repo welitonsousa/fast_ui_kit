@@ -1,6 +1,9 @@
 import 'package:fast_ui_kit/icons/data.dart';
 import 'package:flutter/material.dart';
 
+/// zocial icons
+/// https://zocial.smcllns.com/
+///
 class Zocial {
   final IconData acrobat = const FastIconsData.zocial(61696);
   final IconData amazon = const FastIconsData.zocial(61697);

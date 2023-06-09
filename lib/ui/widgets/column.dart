@@ -8,6 +8,13 @@ class FastColumn extends StatelessWidget {
   final CrossAxisAlignment cross;
   final MainAxisAlignment main;
 
+  /// [FastColumn] is a widget that allows you to create a column with a
+  /// predefined gap between the children.
+  ///
+  /// [children] is a list of widgets that will be displayed in the column.
+  ///
+  /// [xGap] is the horizontal gap between the children.
+  ///
   const FastColumn({
     super.key,
     required this.children,

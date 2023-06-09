@@ -1,6 +1,17 @@
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
+/// FastButtonGroup
+///
+/// example:
+///
+/// ```dart
+/// FastButtonGroup<String>(
+///   callback: (v) {},
+///   values: const ['Test 1', 'Test 2', 'Test 3', 'Test 4'],
+///   initial: const [],
+/// ),
+///
 class FastButtonGroup<T> extends StatefulWidget {
   final void Function(List<T>) callback;
   final List<T> values;
@@ -10,6 +21,18 @@ class FastButtonGroup<T> extends StatefulWidget {
   final bool allowEmpty;
   final Widget Function(T)? itemBuilder;
 
+  /// FastButtonGroup
+  ///
+  /// example:
+  ///
+  /// ```dart
+  /// FastButtonGroup<String>(
+  ///   callback: (v) {},
+  ///   values: const ['Test 1', 'Test 2', 'Test 3', 'Test 4'],
+  ///   initial: const [],
+  /// ),
+  ///
+  /// ```
   const FastButtonGroup({
     super.key,
     required this.callback,

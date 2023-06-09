@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// Elusive Icons
 class Elusive {
   final IconData glass = const FastIconsData.elusive(0xe800);
   final IconData music = const FastIconsData.elusive(0xe801);

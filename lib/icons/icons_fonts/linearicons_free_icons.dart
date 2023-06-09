@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get all icons from linearicons-free
 class LineariconsFree {
   final direction_ltr = const FastIconsData.linearIconsFree(0xe800);
   final direction_rtl = const FastIconsData.linearIconsFree(0xe801);

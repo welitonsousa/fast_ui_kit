@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// Foundation Icons
 class Foundation {
   final address_book = const FastIconsData.foundation(61696);
   final alert = const FastIconsData.foundation(61697);

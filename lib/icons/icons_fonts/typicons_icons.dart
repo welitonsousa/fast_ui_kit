@@ -1,6 +1,7 @@
 import 'package:fast_ui_kit/icons/data.dart';
 import 'package:flutter/widgets.dart';
 
+/// use this class to get [Typicons] icons
 class Typicons {
   final IconData music_outline = const FastIconsData.typicons(0xe800);
   final IconData music = const FastIconsData.typicons(0xe801);

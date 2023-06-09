@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get feather icons
 class Feather {
   final activity = const FastIconsData.feather(59648);
   final airplay = const FastIconsData.feather(59649);

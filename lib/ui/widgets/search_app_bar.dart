@@ -8,6 +8,30 @@ class FastSearchAppBar extends PreferredSize {
   final String? hint;
   final bool? loading;
   final bool animated;
+
+  /// [FastSearchAppBar] is a widget that implements a search bar in the app bar.
+  ///
+  /// [onSearch] is a callback that returns the search value.
+  ///
+  /// [debounceTime] is the time in milliseconds to wait before calling the [onSearch] callback.
+  ///
+  /// [title] is the title of the app bar.
+  ///
+  /// [hint] is the hint text of the search bar.
+  ///
+  /// [loading] is a boolean that indicates if the search is loading.
+  ///
+  /// [animated] is a boolean that indicates if the search bar will be animated.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// Scaffold(
+  // appBar: FastSearchAppBar(
+  //   title: "Fast UI Kit",
+  //   onSearch: (v) {},
+  // ),
+
   FastSearchAppBar({
     super.key,
     this.onSearch,

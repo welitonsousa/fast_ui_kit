@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// Brandico Icons
 class Brandico {
   final facebook_1 = const FastIconsData.brandico(0xf300);
   final facebook_rect = const FastIconsData.brandico(0xf301);

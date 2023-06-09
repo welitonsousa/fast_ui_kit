@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get font awesome 5 icons
 class FontAwesome5 {
   final address_book = const FastIconsData.fontAwesome5(62137);
   final address_card = const FastIconsData.fontAwesome5(62139);

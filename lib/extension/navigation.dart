@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// use this extension to get navigation utilities
 extension NavigationExt on BuildContext {
   Future<T?> dialog<T>(Widget page, {bool dismissible = true}) async {
     return await showDialog<T?>(

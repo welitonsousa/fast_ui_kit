@@ -1,8 +1,18 @@
 import 'package:fast_ui_kit/extension/context.dart';
 import 'package:flutter/material.dart';
 
+/// Button variants enum for [FastButton]
 enum ButtonVariant { outlined, contained }
 
+/// FastButton is a button with a lot of customizations
+///
+/// ```dart
+/// FastButton(
+///   label: 'go to PageContent',
+///   onPressed: () {
+///     context.push(const PageContent());
+///   },
+/// ),
 class FastButton extends StatefulWidget {
   final String label;
   final VoidCallback? onPressed;
@@ -13,6 +23,16 @@ class FastButton extends StatefulWidget {
   final double? elevation;
   final ButtonVariant variant;
 
+  /// FastButton is a button with a lot of customizations
+  ///
+  /// ```dart
+  /// FastButton(
+  ///   label: 'go to PageContent',
+  ///   onPressed: () {
+  ///     context.push(const PageContent());
+  ///   },
+  /// ),
+  /// ```
   const FastButton({
     super.key,
     required this.label,

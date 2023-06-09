@@ -1,5 +1,25 @@
 import 'package:flutter/material.dart';
 
+/// use this extension to get application theme
+///
+/// example:
+///
+/// ```dart
+///   class MyApp extends StatelessWidget {
+///   MyApp({super.key});
+///
+///   final theme = FastTheme(seed: Colors.green);
+///
+///   @override
+///   Widget build(BuildContext context) {
+///     return MaterialApp(
+///       darkTheme: theme.dark,
+///       theme: theme.light,
+///       home: const HomePage(),
+///     );
+///   }
+/// }
+/// ```
 class FastTheme {
   final Color seed;
   final String? font;

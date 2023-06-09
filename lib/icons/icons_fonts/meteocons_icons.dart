@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get meteocons icons
 class Meteocons {
   final windy_rain_inv = const FastIconsData.meteoCons(0xe800);
   final snow_inv = const FastIconsData.meteoCons(0xe801);

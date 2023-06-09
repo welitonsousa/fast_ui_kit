@@ -33,6 +33,22 @@ The components screenshots with colors scheme green selected
 </p>
 <br>
 
+
+#### example of form field
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/formfield.gif">
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/money_mask.gif">
+</p>
+<br>
+
+#### example of form field
+<p>
+  <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/button.png">
+</p>
+<br>
+
+
+
 #### example of button group
 <p>
   <img width="400" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/button_group.gif">

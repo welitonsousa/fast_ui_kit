@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get material community icons
 class MaterialCommunityIcons {
   final ab_testing = const FastIconsData.materialCommunityIcons(983068);
   final access_point = const FastIconsData.materialCommunityIcons(61442);

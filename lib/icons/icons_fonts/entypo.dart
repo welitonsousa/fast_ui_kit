@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get entypo icons
 class Entypo {
   final IconData $500px = const FastIconsData.enTypo(61696);
   final IconData $500px_with_circle = const FastIconsData.enTypo(61697);

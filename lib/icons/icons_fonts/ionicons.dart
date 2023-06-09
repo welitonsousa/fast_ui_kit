@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get ionicons icons
 class Ionicons {
   final ios_add = const FastIconsData.ionicons(61698);
   final ios_add_circle = const FastIconsData.ionicons(61697);

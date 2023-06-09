@@ -7,6 +7,10 @@ class TableItem {
   final String? title;
   final Widget? widget;
 
+  /// width of column
+  ///
+  /// default is 100
+  ///
   TableItem({
     this.title = '',
     this.widget,
@@ -18,6 +22,9 @@ class TableTitleItem {
   final double width;
   final Widget? widget;
 
+  /// width of column
+  ///
+  /// default is 100
   TableTitleItem({
     this.title = '',
     this.widget,
@@ -33,6 +40,32 @@ class FastTable extends StatelessWidget {
   final bool fixedHeader;
   final bool fixedFooter;
 
+  /// ```dart
+  ///  FastTable(
+  ///   header: [
+  ///     TableTitleItem(title: 'Name', width: 200),
+  ///     TableTitleItem(title: 'Age', width: 100),
+  ///     TableTitleItem(title: 'City', width: 100),
+  ///   ],
+  ///   rows: [
+  ///   [
+  ///     TableItem(title: 'John'),
+  ///     TableItem(title: '30'),
+  ///     TableItem(title: 'New York'),
+  ///   ],
+  ///   [
+  ///     TableItem(title: 'John'),
+  ///     TableItem(title: '30'),
+  ///     TableItem(title: 'New York'),
+  ///   ],
+  ///   ],
+  ///   footer: [
+  ///     TableTitleItem(title: 'Name', width: 200),
+  ///     TableTitleItem(title: 'Age', width: 100),
+  ///     TableTitleItem(title: 'City', width: 100),
+  ///   ],
+  /// ),
+  /// ```
   const FastTable({
     super.key,
     this.fixedHeader = false,

@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 class FastContent extends StatelessWidget {
   final List<Widget> children;
   final double maxWidth;
+
+  /// [maxWidth] default is 800
+  /// [children] is required
+  /// [FastContent] is a widget to wrap your content
   const FastContent({super.key, required this.children, this.maxWidth = 800});
 
   @override

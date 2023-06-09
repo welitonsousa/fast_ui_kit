@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
+/// use this enum to define animation type
 enum FastAnimateType {
   none,
   fadeIn,
@@ -56,12 +57,33 @@ enum FastAnimateType {
   roulette,
 }
 
+/// use this widget to animate your widgets
+///
+/// example:
+///
+/// ```dart
+/// FastAnimate(
+///   type: FastAnimateType.fadeInDownBig,
+///   duration: const Duration(seconds: 1),
+///   child: Text('Text H1', style: context.H1),
+/// ),
 class FastAnimate extends StatelessWidget {
   final FastAnimateType type;
   final Duration delay;
   final Duration duration;
   final Widget child;
 
+  /// use this widget to animate your widgets
+  ///
+  /// example:
+  ///
+  /// ```dart
+  /// FastAnimate(
+  ///   type: FastAnimateType.fadeInDownBig,
+  ///   duration: const Duration(seconds: 1),
+  ///   child: Text('Text H1', style: context.H1),
+  /// ),
+  /// ```
   const FastAnimate({
     super.key,
     required this.type,

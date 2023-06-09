@@ -1,8 +1,10 @@
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
+/// use this enum to select the type of file
 OverlayEntry? _previousEntry;
 
+/// Shows a [SnackBar] at the top of the screen.
 void showTopSnackBar(
   BuildContext context,
   Widget child, {
@@ -37,6 +39,7 @@ void showTopSnackBar(
   _previousEntry = overlayEntry;
 }
 
+/// Shows a [SnackBar] at the top of the screen.
 class FastTopMessage extends StatefulWidget {
   final String message;
   final String? title;

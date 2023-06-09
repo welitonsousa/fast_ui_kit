@@ -1,6 +1,13 @@
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
+/// FastButtonIcon
+///
+/// ```dart
+/// FastButtonIcon(
+///   icon: Icons.add,
+///   onPressed: () {},
+/// )
 class FastButtonIcon extends StatefulWidget {
   final IconData icon;
   final VoidCallback? onPressed;
@@ -11,6 +18,14 @@ class FastButtonIcon extends StatefulWidget {
   final double? elevation;
   final ButtonVariant variant;
 
+  /// FastButtonIcon
+  ///
+  /// ```dart
+  /// FastButtonIcon(
+  ///   icon: Icons.add,
+  ///   onPressed: () {},
+  /// )
+  /// ```
   const FastButtonIcon(
       {super.key,
       required this.icon,

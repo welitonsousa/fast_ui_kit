@@ -121,6 +121,10 @@ class _HomePageState extends State<HomePage> {
                   Mask.cpf(),
                 ],
               ),
+              FastFormField(
+                label: "Value",
+                mask: [Mask.money()],
+              ),
               FastAnimate(
                 type: FastAnimateType.fadeInLeftBig,
                 duration: const Duration(seconds: 1),

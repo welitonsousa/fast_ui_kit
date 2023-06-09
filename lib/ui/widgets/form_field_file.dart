@@ -1,6 +1,7 @@
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
+/// ShowFileType is used to define how the file will be displayed
 enum ShowFileType {
   iconAndName,
   bigIcon,
@@ -49,6 +50,39 @@ class FastFormFieldFile extends StatelessWidget {
   final double radius;
   final List<String>? accepts;
   final String? Function(FileData?)? validator;
+
+  /// FastFormFieldFile is used to select a file
+  ///
+  /// [hint] is used to define the hint text
+  ///
+  /// [showRemoveButton] is used to define if the remove button will be displayed
+  ///
+  /// [showFileType] is used to define how the file will be displayed
+  ///
+  /// [onChanged] is used to define the callback when the file is selected
+  ///
+  /// [radius] is used to define the radius of the field
+  ///
+  /// [accepts] is used to define the accepted file types
+  ///
+  /// [validator] is used to define the validator of the field
+  ///
+  /// example:
+  ///
+  /// ```dart
+  ///  FastFormFieldFile(
+  ///   hint: 'File',
+  ///   showRemoveButton: true,
+  ///   showFileType: ShowFileType.iconAndNameOrPreviewWhenImage,
+  ///   onChanged: (file) {
+  ///     print(file);
+  ///   },
+  ///   validator: (file) {
+  ///     if (file == null) return 'File is required';
+  ///     return null;
+  ///   },
+  /// )
+  /// ```
   const FastFormFieldFile({
     super.key,
     this.onChanged,

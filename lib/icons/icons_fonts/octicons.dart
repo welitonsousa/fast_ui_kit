@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// Octicons icon data.
 class Octicons {
   final alert = const FastIconsData.octiCons(61696);
   final archive = const FastIconsData.octiCons(61697);

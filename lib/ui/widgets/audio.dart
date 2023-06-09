@@ -6,10 +6,28 @@ import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
+/// FastAudio
+///
+/// example:
+///
+/// ```dart
+///  FastAudio(
+///   url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+/// )
 class FastAudio extends StatefulWidget {
   final String? url;
   final String? asset;
   final Uint8List? bytes;
+
+  /// FastAudio
+  ///
+  /// example:
+  ///
+  /// ```dart
+  ///  FastAudio(
+  ///   url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+  /// )
+  /// ```
   const FastAudio({super.key, this.url, this.asset, this.bytes})
       : assert(url != null || asset != null || bytes != null);
 
@@ -59,6 +77,7 @@ class _PlayerWidget extends StatefulWidget {
   }
 }
 
+/// FastAudio velocity
 enum Velocity {
   x1,
   x1_5,

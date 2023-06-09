@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get material icons
 class MaterialIcons {
   final $3d_rotation = const FastIconsData.materialIcons(59469);
   final ac_unit = const FastIconsData.materialIcons(60219);

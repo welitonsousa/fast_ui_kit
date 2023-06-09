@@ -4,6 +4,14 @@ import 'package:scrollable_clean_calendar/controllers/clean_calendar_controller.
 import 'package:scrollable_clean_calendar/scrollable_clean_calendar.dart';
 import 'package:scrollable_clean_calendar/utils/enums.dart';
 
+/// use this widget to get a calendar
+///
+/// example:
+///
+/// ```dart
+///  FastCalendar(),
+/// ```
+///
 class FastCalendar extends StatefulWidget {
   final DateTime? firstDate;
   final DateTime? lastDate;
@@ -16,6 +24,14 @@ class FastCalendar extends StatefulWidget {
   final String? locale;
   final void Function(DateTime?, DateTime?)? onRangeSelected;
 
+  /// use this widget to get a calendar
+  ///
+  /// example:
+  ///
+  /// ```dart
+  ///  FastCalendar(),
+  /// ```
+  ///
   const FastCalendar({
     super.key,
     this.firstDate,

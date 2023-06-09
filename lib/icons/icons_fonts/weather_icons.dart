@@ -1,6 +1,7 @@
 import 'package:fast_ui_kit/icons/data.dart';
 import 'package:flutter/material.dart';
 
+/// use this class to get weather icons
 class WeatherIcons {
   final IconData wi_day_sunny = const FastIconsData.weatherIcons(61453);
   final IconData wi_day_cloudy = const FastIconsData.weatherIcons(61442);

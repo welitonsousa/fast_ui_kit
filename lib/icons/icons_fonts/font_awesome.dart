@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get font awesome icons
 class FontAwesome {
   final glass = const FastIconsData.fontAwesome(61440);
   final music = const FastIconsData.fontAwesome(61441);

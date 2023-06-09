@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get rpg awesome icons
 class RpgAwesome {
   final acid = const FastIconsData.rpgAwesome(0xe900);
   final acorn = const FastIconsData.rpgAwesome(0xe901);

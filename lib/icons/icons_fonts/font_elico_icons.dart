@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// use this class to get fontelico icons
 class Fontelico {
   final emo_happy = const FastIconsData.fontElico(0xe800);
   final emo_wink = const FastIconsData.fontElico(0xe801);

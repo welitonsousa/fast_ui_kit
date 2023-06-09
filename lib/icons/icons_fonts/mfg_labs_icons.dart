@@ -1,5 +1,6 @@
 import 'package:fast_ui_kit/icons/data.dart';
 
+/// MfgLabs Icons
 class MfgLabs {
   final mail = const FastIconsData.mfgLabs(0xe800);
   final heart = const FastIconsData.mfgLabs(0xe801);
