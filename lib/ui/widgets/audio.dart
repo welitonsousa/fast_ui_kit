@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -18,6 +19,9 @@ class FastAudio extends StatefulWidget {
   final String? url;
   final String? asset;
   final Uint8List? bytes;
+  final File? file;
+  final bool showVelocityButton;
+  final bool animatePlayerButton;
 
   /// FastAudio
   ///
@@ -28,8 +32,15 @@ class FastAudio extends StatefulWidget {
   ///   url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
   /// )
   /// ```
-  const FastAudio({super.key, this.url, this.asset, this.bytes})
-      : assert(url != null || asset != null || bytes != null);
+  const FastAudio({
+    super.key,
+    this.url,
+    this.asset,
+    this.bytes,
+    this.file,
+    this.showVelocityButton = true,
+    this.animatePlayerButton = true,
+  }) : assert(url != null || asset != null || bytes != null || file != null);
 
   @override
   State<FastAudio> createState() => _FastAudioState();
@@ -43,6 +54,7 @@ class _FastAudioState extends State<FastAudio> {
     if (widget.url != null) player.setSourceUrl(widget.url!);
     if (widget.asset != null) player.setSourceAsset(widget.asset!);
     if (widget.bytes != null) player.setSourceBytes(widget.bytes!);
+    if (widget.file != null) player.setSourceDeviceFile(widget.file!.path);
 
     super.initState();
   }
@@ -50,7 +62,6 @@ class _FastAudioState extends State<FastAudio> {
   @override
   void dispose() {
     player.stop().then((v) => player.dispose());
-    player.dispose();
     super.dispose();
   }
 
@@ -58,7 +69,11 @@ class _FastAudioState extends State<FastAudio> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _PlayerWidget(player: player),
+        _PlayerWidget(
+          player: player,
+          showVelocityButton: widget.showVelocityButton,
+          animatePlayerButton: widget.animatePlayerButton,
+        ),
       ],
     );
   }
@@ -66,9 +81,12 @@ class _FastAudioState extends State<FastAudio> {
 
 class _PlayerWidget extends StatefulWidget {
   final AudioPlayer player;
-
+  final bool showVelocityButton;
+  final bool animatePlayerButton;
   const _PlayerWidget({
     required this.player,
+    required this.showVelocityButton,
+    required this.animatePlayerButton,
   });
 
   @override
@@ -113,8 +131,10 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
   StreamSubscription<dynamic>? _playerCompleteSubscription;
   StreamSubscription<dynamic>? _playerStateChangeSubscription;
 
-  String get _durationText => _duration?.toString().split('.').first ?? '';
-  String get _positionText => _position?.toString().split('.').first ?? '';
+  String get _durationText =>
+      (_duration?.toString().split('.')[0].substring(2) ?? '');
+  String get _positionText =>
+      (_position?.toString().split('.')[0].substring(2) ?? '');
 
   AudioPlayer get player => widget.player;
 
@@ -159,10 +179,11 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
           children: [
             if (_playerState != PlayerState.playing)
               FastAnimate(
-                type: FastAnimateType.spin,
+                type: widget.animatePlayerButton
+                    ? FastAnimateType.spin
+                    : FastAnimateType.none,
                 duration: const Duration(milliseconds: 500),
                 child: IconButton(
-                  key: const Key('play_button'),
                   onPressed: _play,
                   iconSize: 30.0,
                   icon: const Icon(Icons.play_arrow),
@@ -171,10 +192,11 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
               ),
             if (_playerState == PlayerState.playing)
               FastAnimate(
-                type: FastAnimateType.dance,
+                type: widget.animatePlayerButton
+                    ? FastAnimateType.dance
+                    : FastAnimateType.none,
                 duration: const Duration(milliseconds: 500),
                 child: IconButton(
-                  key: const Key('pause_button'),
                   onPressed: _pause,
                   iconSize: 30.0,
                   icon: const Icon(Icons.pause),
@@ -217,26 +239,27 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
                 ],
               ),
             ),
-            ChoiceChip(
-              selected: false,
-              padding: EdgeInsets.zero,
-              backgroundColor: context.button.primaryContainer,
-              side: BorderSide(color: context.colors.primary),
-              pressElevation: 10,
-              onSelected: (v) {
-                velocity = velocity.next();
-                if (player.state != PlayerState.playing) {
-                  player.setPlaybackRate(velocity.value);
-                  player.pause();
-                } else {
-                  player.setPlaybackRate(velocity.value);
-                }
-              },
-              label: SizedBox(
-                width: 30,
-                child: Center(child: Text(velocity.name)),
+            if (widget.showVelocityButton)
+              ChoiceChip(
+                selected: false,
+                padding: EdgeInsets.zero,
+                backgroundColor: context.button.primaryContainer,
+                side: BorderSide(color: context.colors.primary),
+                pressElevation: 10,
+                onSelected: (v) {
+                  velocity = velocity.next();
+                  if (player.state != PlayerState.playing) {
+                    player.setPlaybackRate(velocity.value);
+                    player.pause();
+                  } else {
+                    player.setPlaybackRate(velocity.value);
+                  }
+                },
+                label: SizedBox(
+                  width: 30,
+                  child: Center(child: Text(velocity.name)),
+                ),
               ),
-            ),
           ],
         ),
       ],

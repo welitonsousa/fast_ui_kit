@@ -81,6 +81,8 @@ class __SearchAppBarState extends State<_SearchAppBar> {
       children: [
         AppBar(
           title: Text(widget.title),
+          leading: searching ? const SizedBox() : null,
+          leadingWidth: searching ? 0 : null,
           actions: [
             if (!searching && widget.onSearch != null)
               IconButton(
