@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -42,13 +44,26 @@ enum ShowFileType {
   }
 }
 
-class FastFormFieldFile extends StatelessWidget {
+enum _FastType { network, asset, file }
+
+class FastFileInitialData {
+  final String path;
+  // ignore: library_private_types_in_public_api
+  final _FastType type;
+
+  FastFileInitialData.file(this.path) : type = _FastType.file;
+  FastFileInitialData.network(this.path) : type = _FastType.network;
+  FastFileInitialData.asset(this.path) : type = _FastType.asset;
+}
+
+class FastFormFieldFile extends StatefulWidget {
   final String hint;
   final bool showRemoveButton;
   final ShowFileType showFileType;
   final void Function(FileData?)? onChanged;
   final double radius;
   final List<String>? accepts;
+  final FastFileInitialData? initialValue;
   final String? Function(FileData?)? validator;
 
   /// FastFormFieldFile is used to select a file
@@ -92,29 +107,44 @@ class FastFormFieldFile extends StatelessWidget {
     this.showRemoveButton = true,
     this.validator,
     this.radius = 8,
+    this.initialValue,
   });
+
+  @override
+  State<FastFormFieldFile> createState() => _FastFormFieldFileState();
+}
+
+class _FastFormFieldFileState extends State<FastFormFieldFile> {
+  FastFileInitialData? initialValue;
+
+  @override
+  initState() {
+    super.initState();
+    initialValue = widget.initialValue;
+  }
 
   @override
   Widget build(BuildContext context) {
     return FormField<FileData>(
-      validator: validator,
+      validator: widget.validator,
       builder: (field) {
         final isImage = _FileItem(path: '', size: null)
             .imagesFormats
             .contains(field.value?.path.split('.').last);
         return InkWell(
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: BorderRadius.circular(widget.radius),
           onTap: () async {
             final files = await FastPickerService.picker(
-              accept: accepts,
-              type: accepts != null
+              accept: widget.accepts,
+              type: widget.accepts != null
                   ? FastPickerType.custom
                   : FastPickerType.image,
             );
             if (files != null) {
               field.didChange(files.first);
-              onChanged?.call(files.first);
+              widget.onChanged?.call(files.first);
             }
+            initialValue = null;
           },
           child: Stack(
             children: [
@@ -127,7 +157,7 @@ class FastFormFieldFile extends StatelessWidget {
                       border: Border.all(
                           color:
                               field.hasError ? Colors.red[900]! : Colors.grey),
-                      borderRadius: BorderRadius.circular(radius),
+                      borderRadius: BorderRadius.circular(widget.radius),
                     ),
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -138,30 +168,66 @@ class FastFormFieldFile extends StatelessWidget {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             if (field.value != null)
-                              if (showFileType.showPreview(isImage))
+                              if (widget.showFileType.showPreview(isImage))
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(radius),
-                                  child: Image.memory(
-                                    field.value!.data,
+                                  borderRadius:
+                                      BorderRadius.circular(widget.radius),
+                                  child: Image.file(
+                                    File(field.value!.path),
                                     height: 200,
                                     fit: BoxFit.cover,
                                   ),
-                                ),
+                                )
+                              else if (initialValue != null)
+                                if (widget.showFileType.showPreview(isImage))
+                                  if (initialValue!.type == _FastType.network)
+                                    ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.circular(widget.radius),
+                                      child: Image.network(
+                                        initialValue!.path,
+                                        height: 200,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  else if (initialValue!.type ==
+                                      _FastType.asset)
+                                    ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.circular(widget.radius),
+                                      child: Image.asset(
+                                        initialValue!.path,
+                                        height: 200,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  else if (initialValue!.type == _FastType.file)
+                                    ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.circular(widget.radius),
+                                      child: Image.file(
+                                        File(initialValue!.path),
+                                        height: 200,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                             Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: Row(
                                 mainAxisAlignment: field.value != null &&
-                                        showFileType.iconSize == 150
+                                        widget.showFileType.iconSize == 150
                                     ? MainAxisAlignment.center
                                     : MainAxisAlignment.start,
                                 children: [
-                                  if (field.value != null)
-                                    if (showFileType.showIcon(isImage))
+                                  if (field.value != null ||
+                                      initialValue != null)
+                                    if (widget.showFileType.showIcon(isImage))
                                       _FileItem(
-                                          path: field.value!.path,
-                                          size: showFileType.iconSize),
-                                  if (field.value != null)
-                                    if (showFileType.showName(isImage))
+                                        path: field.value!.path,
+                                        size: widget.showFileType.iconSize,
+                                      )
+                                    else if (widget.showFileType
+                                        .showName(isImage))
                                       Expanded(
                                         child: Padding(
                                           padding:
@@ -170,7 +236,7 @@ class FastFormFieldFile extends StatelessWidget {
                                               field.value?.path
                                                       .split('/')
                                                       .last ??
-                                                  hint,
+                                                  widget.hint,
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 1,
                                               style: context
@@ -181,15 +247,16 @@ class FastFormFieldFile extends StatelessWidget {
                                                     : null,
                                               )),
                                         ),
-                                      ),
-                                  if (field.value == null)
-                                    Text(hint,
-                                        style: context.theme.textTheme.bodyLarge
-                                            ?.copyWith(
-                                          color: field.hasError
-                                              ? Colors.red[900]!
-                                              : null,
-                                        )),
+                                      )
+                                    else
+                                      Text(widget.hint,
+                                          style: context
+                                              .theme.textTheme.bodyLarge
+                                              ?.copyWith(
+                                            color: field.hasError
+                                                ? Colors.red[900]!
+                                                : null,
+                                          )),
                                 ],
                               ),
                             )
@@ -213,13 +280,13 @@ class FastFormFieldFile extends StatelessWidget {
                     ),
                 ],
               ),
-              if (showRemoveButton && field.value != null)
+              if (widget.showRemoveButton && field.value != null)
                 Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
                     onPressed: () {
                       field.didChange(null);
-                      onChanged?.call(null);
+                      widget.onChanged?.call(null);
                     },
                     icon: const Icon(Icons.delete_rounded),
                     color: Colors.red,
