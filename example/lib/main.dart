@@ -63,12 +63,27 @@ class _HomePageState extends State<HomePage> {
             xGap: 10,
             yGap: 10,
             children: [
-              const FastFormFieldFile(),
-              const FastFormFieldFile(showFileType: ShowFileType.bigIcon),
+              FastFormFieldFile(
+                initialValue: FastFileInitialData.network(
+                  'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+                ),
+              ),
+              FastFormFieldFile(
+                showFileType: ShowFileType.bigIcon,
+                initialValue: FastFileInitialData.network(
+                  'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+                ),
+              ),
               const FastFormFieldFile(
-                  showFileType: ShowFileType.bigIconOrPreviewWhenImage,
-                  accepts: ['pdf']),
-              const FastFormFieldFile(showFileType: ShowFileType.iconAndName),
+                showFileType: ShowFileType.bigIconOrPreviewWhenImage,
+                accepts: ['pdf'],
+              ),
+              FastFormFieldFile(
+                showFileType: ShowFileType.iconAndName,
+                initialValue: FastFileInitialData.network(
+                  'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+                ),
+              ),
               FastButtonIcon(
                 icon: FastIcons.modernPictograms.pencil,
                 variant: ButtonVariant.outlined,

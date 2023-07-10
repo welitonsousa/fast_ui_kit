@@ -124,13 +124,21 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
   }
 
   @override
+  void didUpdateWidget(covariant FastFormFieldFile oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.initialValue?.path != widget.initialValue?.path) {
+      initialValue = widget.initialValue;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FormField<FileData>(
       validator: widget.validator,
       builder: (field) {
-        final isImage = _FileItem(path: '', size: null)
-            .imagesFormats
-            .contains(field.value?.path.split('.').last);
+        final isImage = _FileItem(path: '', size: null).imagesFormats.contains(
+            (field.value?.path ?? initialValue?.path)?.split('.').last);
         return InkWell(
           borderRadius: BorderRadius.circular(widget.radius),
           onTap: () async {
@@ -170,51 +178,52 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                             if (field.value != null)
                               if (widget.showFileType.showPreview(isImage))
                                 ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.circular(widget.radius),
+                                  borderRadius: BorderRadius.circular(
+                                    widget.radius,
+                                  ),
                                   child: Image.file(
                                     File(field.value!.path),
                                     height: 200,
                                     fit: BoxFit.cover,
                                   ),
-                                )
-                              else if (initialValue != null)
-                                if (widget.showFileType.showPreview(isImage))
-                                  if (initialValue!.type == _FastType.network)
-                                    ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.circular(widget.radius),
-                                      child: Image.network(
-                                        initialValue!.path,
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )
-                                  else if (initialValue!.type ==
-                                      _FastType.asset)
-                                    ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.circular(widget.radius),
-                                      child: Image.asset(
-                                        initialValue!.path,
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )
-                                  else if (initialValue!.type == _FastType.file)
-                                    ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.circular(widget.radius),
-                                      child: Image.file(
-                                        File(initialValue!.path),
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
+                                ),
+                            if (initialValue != null)
+                              if (widget.showFileType.showPreview(isImage))
+                                if (initialValue!.type == _FastType.network)
+                                  ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.circular(widget.radius),
+                                    child: Image.network(
+                                      initialValue!.path,
+                                      height: 200,
+                                      fit: BoxFit.cover,
                                     ),
+                                  )
+                                else if (initialValue!.type == _FastType.asset)
+                                  ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.circular(widget.radius),
+                                    child: Image.asset(
+                                      initialValue!.path,
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                else if (initialValue!.type == _FastType.file)
+                                  ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.circular(widget.radius),
+                                    child: Image.file(
+                                      File(initialValue!.path),
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                             Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: Row(
-                                mainAxisAlignment: field.value != null &&
+                                mainAxisAlignment: (field.value != null ||
+                                            initialValue != null) &&
                                         widget.showFileType.iconSize == 150
                                     ? MainAxisAlignment.center
                                     : MainAxisAlignment.start,
@@ -223,40 +232,41 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                       initialValue != null)
                                     if (widget.showFileType.showIcon(isImage))
                                       _FileItem(
-                                        path: field.value!.path,
+                                        path: field.value?.path ??
+                                            initialValue!.path,
                                         size: widget.showFileType.iconSize,
-                                      )
-                                    else if (widget.showFileType
-                                        .showName(isImage))
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 30),
-                                          child: Text(
-                                              field.value?.path
-                                                      .split('/')
-                                                      .last ??
-                                                  widget.hint,
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                              style: context
-                                                  .theme.textTheme.bodyLarge
-                                                  ?.copyWith(
-                                                color: field.hasError
-                                                    ? Colors.red[900]!
-                                                    : null,
-                                              )),
-                                        ),
-                                      )
-                                    else
-                                      Text(widget.hint,
-                                          style: context
-                                              .theme.textTheme.bodyLarge
-                                              ?.copyWith(
-                                            color: field.hasError
-                                                ? Colors.red[900]!
-                                                : null,
-                                          )),
+                                      ),
+                                  if (widget.showFileType.showName(isImage))
+                                    Expanded(
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 30),
+                                        child: Text(
+                                            (field.value?.path ??
+                                                        initialValue?.path)
+                                                    ?.split('/')
+                                                    .last ??
+                                                widget.hint,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                            style: context
+                                                .theme.textTheme.bodyLarge
+                                                ?.copyWith(
+                                              color: field.hasError
+                                                  ? Colors.red[900]!
+                                                  : null,
+                                            )),
+                                      ),
+                                    ),
+                                  if (field.value == null &&
+                                      initialValue == null)
+                                    Text(widget.hint,
+                                        style: context.theme.textTheme.bodyLarge
+                                            ?.copyWith(
+                                          color: field.hasError
+                                              ? Colors.red[900]!
+                                              : null,
+                                        )),
                                 ],
                               ),
                             )
@@ -280,12 +290,14 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                     ),
                 ],
               ),
-              if (widget.showRemoveButton && field.value != null)
+              if (widget.showRemoveButton &&
+                  (field.value != null || initialValue != null))
                 Align(
                   alignment: Alignment.topRight,
                   child: IconButton(
                     onPressed: () {
                       field.didChange(null);
+                      initialValue = null;
                       widget.onChanged?.call(null);
                     },
                     icon: const Icon(Icons.delete_rounded),
@@ -304,7 +316,7 @@ class _FileItem extends StatelessWidget {
   final String path;
   final double? size;
   _FileItem({required this.path, required this.size});
-  final vidoesFormats = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'];
+  final videosFormats = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'webm'];
   final audiosFormats = ['mp3', 'wav', 'wma', 'aac', 'flac', 'ogg'];
   final imagesFormats = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
   final pdfFormats = ['pdf'];
@@ -334,7 +346,7 @@ class _FileItem extends StatelessWidget {
     if (audiosFormats.contains(format)) {
       return Icon(FastIcons.mci.file_music_outline, size: size);
     }
-    if (vidoesFormats.contains(format)) {
+    if (videosFormats.contains(format)) {
       return Icon(FastIcons.mci.file_video_outline, size: size);
     }
 
