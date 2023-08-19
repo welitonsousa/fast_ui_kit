@@ -1,8 +1,11 @@
-## 1.0.5
+## 1.0.6
 * Bug corrections
 * Add FastLinkFy
 * Add FastLinkFyHelper
 * Add FastClipBoard
+
+## 1.0.6
+* Bug corrections
 
 ## 1.0.4
 
