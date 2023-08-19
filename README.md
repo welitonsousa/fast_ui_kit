@@ -3,9 +3,6 @@
 <img width="400" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/images/fast.png">
 </p>
 
-### Access the complete documentation 
-[www.fast-ui-kit.vercel.app](https://fast-ui-kit.vercel.app)
-
 ### Simple Implementation !
 
 <p>
@@ -80,6 +77,12 @@ The components screenshots with colors scheme green selected
 </p>
 <br>
 
+#### example of LinkFy
+<p>
+  <img height="60" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/link_fy.png">
+</p>
+<br>
+
 #### example of input picker
 <p>
   <img width="300" src="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/assets/components/file.gif">
@@ -135,6 +138,7 @@ class MyApp extends StatelessWidget {
 - FastButtonIcon
 - FastButtonGroup
 - FastAudio
+- FastLinkFy
 - FastIcon -> `Icon(FastIcons.library.icon)`
 
 ### Extension
@@ -205,8 +209,6 @@ context.showMessage(
 <br>
 
 <a target="_blank" href="https://raw.githubusercontent.com/welitonsousa/fast_ui_kit/main/example/lib/main.dart">📄 Access the example file</a>
-
-<a target="_blank" href="https://fast-ui-kit.vercel.app">📚 Access the complete documentation</a>
 
 
 <br>

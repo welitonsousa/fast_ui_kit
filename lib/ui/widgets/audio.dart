@@ -5,7 +5,6 @@ import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 
 /// FastAudio
 ///
@@ -47,15 +46,15 @@ class FastAudio extends StatefulWidget {
 }
 
 class _FastAudioState extends State<FastAudio> {
-  final AudioPlayer player = AudioPlayer(playerId: const Uuid().v1());
+  final AudioPlayer player = AudioPlayer();
 
   @override
   void initState() {
+    AudioLogger.logLevel = AudioLogLevel.none;
     if (widget.url != null) player.setSourceUrl(widget.url!);
     if (widget.asset != null) player.setSourceAsset(widget.asset!);
     if (widget.bytes != null) player.setSourceBytes(widget.bytes!);
     if (widget.file != null) player.setSourceDeviceFile(widget.file!.path);
-
     super.initState();
   }
 
@@ -123,26 +122,26 @@ enum Velocity {
 class __PlayerWidgetState extends State<_PlayerWidget> {
   PlayerState? _playerState;
   Velocity velocity = Velocity.x1;
-  Duration? _duration;
-  Duration? _position;
+  Duration _duration = const Duration();
+  Duration _position = const Duration();
 
   StreamSubscription<dynamic>? _durationSubscription;
   StreamSubscription<dynamic>? _positionSubscription;
   StreamSubscription<dynamic>? _playerCompleteSubscription;
   StreamSubscription<dynamic>? _playerStateChangeSubscription;
 
-  String get _durationText =>
-      (_duration?.toString().split('.')[0].substring(2) ?? '');
-  String get _positionText =>
-      (_position?.toString().split('.')[0].substring(2) ?? '');
-
+  String get _durationText => _duration.toString().split('.')[0].substring(2);
+  String get _positionText => _position.toString().split('.')[0].substring(2);
   AudioPlayer get player => widget.player;
 
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _start();
+      _start();
+      _initStreams();
+    });
     super.initState();
-    _start();
-    _initStreams();
   }
 
   Future<void> _start() async {
@@ -151,8 +150,9 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
       player.getDuration(),
       player.getCurrentPosition(),
     ]);
-    _duration = res[0];
-    _position = res[1];
+
+    if (res[0] != null) _duration = res[0]!;
+    if (res[1] != null) _position = res[1]!;
   }
 
   @override
@@ -211,18 +211,14 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
                     child: Slider(
                       onChanged: (v) {
                         final duration = _duration;
-                        if (duration == null) return;
 
                         final position = v * duration.inMilliseconds;
                         player.seek(Duration(milliseconds: position.round()));
                       },
-                      value: (_position != null &&
-                              _duration != null &&
-                              _position!.inMilliseconds > 0 &&
-                              _position!.inMilliseconds <
-                                  _duration!.inMilliseconds)
-                          ? _position!.inMilliseconds /
-                              _duration!.inMilliseconds
+                      value: (_position.inMilliseconds > 0 &&
+                              _position.inMilliseconds <
+                                  _duration.inMilliseconds)
+                          ? _position.inMilliseconds / _duration.inMilliseconds
                           : 0.0,
                     ),
                   ),
@@ -292,7 +288,7 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
 
   Future<void> _play() async {
     final position = _position;
-    if (position != null && position.inMilliseconds > 0) {
+    if (position.inMilliseconds > 0) {
       await player.seek(position);
     }
     await player.resume();

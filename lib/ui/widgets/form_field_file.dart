@@ -149,10 +149,13 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                   : FastPickerType.image,
             );
             if (files != null) {
-              field.didChange(files.first);
               widget.onChanged?.call(files.first);
+              widget.validator?.call(files.first);
+              field.didChange(files.first);
+              field.validate();
             }
             initialValue = null;
+            setState(() {});
           },
           child: Stack(
             children: [
@@ -260,13 +263,16 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                     ),
                                   if (field.value == null &&
                                       initialValue == null)
-                                    Text(widget.hint,
-                                        style: context.theme.textTheme.bodyLarge
-                                            ?.copyWith(
-                                          color: field.hasError
-                                              ? Colors.red[900]!
-                                              : null,
-                                        )),
+                                    if (widget.showFileType.index == 3 ||
+                                        widget.showFileType.index == 1)
+                                      Text(widget.hint,
+                                          style: context
+                                              .theme.textTheme.bodyLarge
+                                              ?.copyWith(
+                                            color: field.hasError
+                                                ? Colors.red[900]!
+                                                : null,
+                                          )),
                                 ],
                               ),
                             )
@@ -298,6 +304,8 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                     onPressed: () {
                       field.didChange(null);
                       initialValue = null;
+                      field.validate();
+
                       widget.onChanged?.call(null);
                     },
                     icon: const Icon(Icons.delete_rounded),

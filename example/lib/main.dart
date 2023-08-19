@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:example/pages/content_builder.dart';
 import 'package:example/pages/table_page.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:fast_ui_kit/ui/widgets/carousel.dart';
+import 'package:fast_ui_kit/ui/widgets/link_fy.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -151,6 +154,12 @@ class _HomePageState extends State<HomePage> {
               Text('Text H5', style: context.H5),
               Text('Text H6', style: context.H6),
               Text('Text P - Paragraph', style: context.p),
+              FastLinkFy(
+                text: 'test link https://www.google.com tap me',
+                onTapLink: (v) {
+                  log(v);
+                },
+              ),
               FastButton(
                 label: 'go to list builder',
                 onPressed: () {

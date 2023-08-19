@@ -19,6 +19,7 @@ class FastFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final List<TextInputFormatter>? mask;
   final int maxLines;
+  final Function()? onEditingComplete;
   final int minLines;
   final double radius;
 
@@ -46,6 +47,7 @@ class FastFormField extends StatelessWidget {
     this.textInputType,
     this.textInputAction,
     this.mask,
+    this.onEditingComplete,
     this.radius = 8,
     this.maxLines = 1,
     this.minLines = 1,
@@ -63,6 +65,7 @@ class FastFormField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       keyboardType: textInputType,
       maxLines: maxLines,
+      onEditingComplete: onEditingComplete,
       minLines: minLines,
       validator: validator,
       autofocus: autoFocus ?? false,

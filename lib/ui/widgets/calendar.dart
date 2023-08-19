@@ -17,6 +17,7 @@ class FastCalendar extends StatefulWidget {
   final DateTime? lastDate;
   final DateTime? initialSelectedFirstDate;
   final DateTime? initialSelectedLastDate;
+  final DateTime? initialFocusDate;
   final BoxDecoration? decoration;
   final bool rangeMode;
   final double maxHeight;
@@ -36,6 +37,7 @@ class FastCalendar extends StatefulWidget {
     super.key,
     this.firstDate,
     this.lastDate,
+    this.initialFocusDate,
     this.rangeMode = false,
     this.maxHeight = 400,
     this.maxWidth = 400,
@@ -65,7 +67,7 @@ class _FastCalendarState extends State<FastCalendar> {
       onRangeSelected: widget.onRangeSelected,
       initialDateSelected: widget.initialSelectedFirstDate,
       endDateSelected: widget.initialSelectedLastDate,
-      initialFocusDate: DateTime.now(),
+      initialFocusDate: widget.initialFocusDate ?? DateTime.now(),
     );
   }
 

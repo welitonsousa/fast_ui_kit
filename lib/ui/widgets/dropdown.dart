@@ -8,6 +8,8 @@ class FastDropDown<T> extends StatelessWidget {
   final void Function(T?)? onChanged;
   final Widget Function(T)? itemBuilder;
   final T? value;
+  final bool showClearButton;
+  final Widget? clearButton;
   final double radius;
 
   /// use this widget to create a dropdown
@@ -34,9 +36,23 @@ class FastDropDown<T> extends StatelessWidget {
     this.radius = 8,
     this.onChanged,
     this.validation,
+    this.clearButton,
+    this.showClearButton = true,
     this.itemBuilder,
     required this.items,
   });
+
+  Widget? get icon {
+    if (value != null) {
+      if (showClearButton || clearButton != null) {
+        return GestureDetector(
+          onTap: () => onChanged?.call(null),
+          child: clearButton ?? const Icon(Icons.clear),
+        );
+      }
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +62,7 @@ class FastDropDown<T> extends StatelessWidget {
       value: value,
       hint: hint != null ? Text(hint!) : null,
       enableFeedback: true,
+      icon: icon,
       focusColor: Colors.transparent,
       decoration: InputDecoration(
         filled: false,

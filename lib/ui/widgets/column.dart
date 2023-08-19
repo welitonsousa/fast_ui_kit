@@ -5,6 +5,7 @@ class FastColumn extends StatelessWidget {
   final double xGap;
   final double yGap;
   final bool extreme;
+  final MainAxisSize size;
   final CrossAxisAlignment cross;
   final MainAxisAlignment main;
 
@@ -21,6 +22,7 @@ class FastColumn extends StatelessWidget {
     this.xGap = 10,
     this.yGap = 10,
     this.extreme = false,
+    this.size = MainAxisSize.max,
     this.cross = CrossAxisAlignment.start,
     this.main = MainAxisAlignment.start,
   });
@@ -32,6 +34,7 @@ class FastColumn extends StatelessWidget {
       child: Column(
         crossAxisAlignment: cross,
         mainAxisAlignment: main,
+        mainAxisSize: size,
         children: [
           if (extreme) SizedBox(height: yGap / 2),
           ...children

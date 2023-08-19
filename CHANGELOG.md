@@ -1,3 +1,9 @@
+## 1.0.5
+* Bug corrections
+* Add FastLinkFy
+* Add FastLinkFyHelper
+* Add FastClipBoard
+
 ## 1.0.4
 
 * Add initial value on FastFormFieldFile Widget
