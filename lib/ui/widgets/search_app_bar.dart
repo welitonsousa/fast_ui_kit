@@ -8,6 +8,7 @@ class FastSearchAppBar extends PreferredSize {
   final String? hint;
   final bool? loading;
   final bool animated;
+  final List<Widget>? actions;
 
   /// [FastSearchAppBar] is a widget that implements a search bar in the app bar.
   ///
@@ -34,6 +35,7 @@ class FastSearchAppBar extends PreferredSize {
 
   FastSearchAppBar({
     super.key,
+    this.actions,
     this.onSearch,
     this.debounceTime,
     required this.title,
@@ -42,6 +44,7 @@ class FastSearchAppBar extends PreferredSize {
     this.animated = true,
   }) : super(
             child: _SearchAppBar(
+              actions: [...?actions],
               onSearch: onSearch,
               animated: animated,
               debounceTime: debounceTime,
@@ -59,8 +62,10 @@ class _SearchAppBar extends StatefulWidget {
   final int? debounceTime;
   final String? hint;
   final bool? loading;
+  final List<Widget>? actions;
   final bool animated;
   const _SearchAppBar({
+    required this.actions,
     required this.onSearch,
     required this.title,
     required this.hint,
@@ -84,6 +89,7 @@ class __SearchAppBarState extends State<_SearchAppBar> {
           leading: searching ? const SizedBox() : null,
           leadingWidth: searching ? 0 : null,
           actions: [
+            if (!searching && widget.onSearch != null) ...?widget.actions,
             if (!searching && widget.onSearch != null)
               IconButton(
                 icon: const Icon(Icons.search),
