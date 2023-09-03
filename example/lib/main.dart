@@ -4,7 +4,7 @@ import 'package:example/pages/content_builder.dart';
 import 'package:example/pages/table_page.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:fast_ui_kit/ui/widgets/carousel.dart';
-import 'package:fast_ui_kit/ui/widgets/link_fy.dart';
+import 'package:fast_ui_kit/ui/widgets/search_select.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -169,6 +169,26 @@ class _HomePageState extends State<HomePage> {
               const FastButton(
                 label: 'File Picker',
                 onPressed: FastPickerService.picker,
+              ),
+              FastSearchSelect<String>(
+                hint: 'search select',
+                onSearch: (v) async {
+                  await Future.delayed(const Duration(seconds: 1));
+                  return <String>['re testes'];
+                },
+                validation: (v) {
+                  if (v.isEmpty) {
+                    return 'Selecione pelo menos um item';
+                  }
+                  return null;
+                },
+                searchTitle: 'Pesquisar...',
+                items: const [
+                  'Test 1',
+                  'Test 2',
+                  'Test 3',
+                  'Test 4',
+                ],
               ),
               FastDropDown(
                 items: const [1, 2, 3, 4],

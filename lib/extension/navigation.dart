@@ -44,8 +44,8 @@ extension NavigationExt on BuildContext {
     );
   }
 
-  void pop() {
-    Navigator.of(this).pop();
+  void pop([result]) {
+    Navigator.of(this).pop(result);
   }
 
   void popUntil() {
