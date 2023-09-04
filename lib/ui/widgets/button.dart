@@ -87,6 +87,7 @@ class _FastButtonState extends State<FastButton> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
+      width: double.infinity,
       child: ElevatedButton(
         onPressed: widget.onPressed != null
             ? () {
@@ -94,25 +95,20 @@ class _FastButtonState extends State<FastButton> {
               }
             : null,
         style: style,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (widget.loading ?? false)
-              SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: textColor,
-                ),
+        child: Visibility(
+            visible: widget.loading ?? false,
+            replacement: Text(
+              widget.label,
+              style: TextStyle(color: textColor),
+            ),
+            child: SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: textColor,
               ),
-            if (!(widget.loading ?? false))
-              Text(
-                widget.label,
-                style: TextStyle(color: textColor),
-              ),
-          ],
-        ),
+            )),
       ),
     );
   }

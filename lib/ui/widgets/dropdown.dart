@@ -60,6 +60,7 @@ class FastDropDown<T> extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       elevation: 0,
       value: value,
+      isExpanded: true,
       hint: hint != null ? Text(hint!) : null,
       enableFeedback: true,
       icon: icon,
@@ -71,7 +72,13 @@ class FastDropDown<T> extends StatelessWidget {
       items: items.map((e) {
         return DropdownMenuItem(
           value: e,
-          child: itemBuilder?.call(e) ?? Text(e.toString()),
+          child: Center(
+            child: itemBuilder?.call(e) ??
+                Text(
+                  e.toString(),
+                  overflow: TextOverflow.ellipsis,
+                ),
+          ),
         );
       }).toList(),
       validator: validation?.build,

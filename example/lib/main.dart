@@ -172,10 +172,6 @@ class _HomePageState extends State<HomePage> {
               ),
               FastSearchSelect<String>(
                 hint: 'search select',
-                onSearch: (v) async {
-                  await Future.delayed(const Duration(seconds: 1));
-                  return <String>['re testes'];
-                },
                 validation: (v) {
                   if (v.isEmpty) {
                     return 'Selecione pelo menos um item';
@@ -194,10 +190,11 @@ class _HomePageState extends State<HomePage> {
                 items: const [1, 2, 3, 4],
                 hint: 'Selecione o numero',
                 itemBuilder: (v) {
-                  return FastRow(
+                  return Row(
                     children: [
                       Icon(FastIcons.ant.profile),
-                      Text(v.toString()),
+                      const SizedBox(width: 10),
+                      Expanded(child: Text(v.toString())),
                     ],
                   );
                 },
