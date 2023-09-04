@@ -131,6 +131,7 @@ class MyApp extends StatelessWidget {
 - FastFormField
 - FastFormFieldFile
 - FastDropDown
+- FastSearchSelect
 - FastDialog
 - FastContent
 - FastCarousel

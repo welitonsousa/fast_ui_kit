@@ -1,3 +1,8 @@
+## 1.0.7
+* Bug corrections
+* Add FastSearchSelect
+* Add actions on FastSearchAppBar
+
 ## 1.0.6
 * Bug corrections
 * Add FastLinkFy

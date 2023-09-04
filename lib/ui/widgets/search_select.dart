@@ -106,9 +106,31 @@ class _FastSearchSelectState<T> extends State<FastSearchSelect<T>> {
                               ),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
-                              child: Text(
-                                e.toString(),
-                                style: TextStyle(color: context.colors.primary),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    e.toString(),
+                                    style: TextStyle(
+                                        color: context.colors.primary),
+                                  ),
+                                  if (widget.showClearButton)
+                                    const SizedBox(width: 5),
+                                  if (widget.showClearButton)
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          selections.remove(e);
+                                          widget.onChanged?.call(selections);
+                                        });
+                                      },
+                                      child: Icon(
+                                        Icons.close,
+                                        size: 15,
+                                        color: context.colors.primary,
+                                      ),
+                                    ),
+                                ],
                               ),
                             ),
                           ),
