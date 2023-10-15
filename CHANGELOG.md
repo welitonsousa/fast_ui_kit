@@ -1,3 +1,7 @@
+## 1.0.10
+* Bug corrections
+* Add FastFormAvatarFile
+
 ## 1.0.7
 * Bug corrections
 * Add FastSearchSelect

@@ -53,10 +53,15 @@ class _FastAudioState extends State<FastAudio> {
   @override
   void initState() {
     AudioLogger.logLevel = AudioLogLevel.none;
-    if (widget.url != null) player.setSourceUrl(widget.url!);
-    if (widget.asset != null) player.setSourceAsset(widget.asset!);
-    if (widget.bytes != null) player.setSourceBytes(widget.bytes!);
-    if (widget.file != null) player.setSourceDeviceFile(widget.file!.path);
+    if (widget.url != null) {
+      player.setSourceUrl(widget.url!);
+    } else if (widget.asset != null) {
+      player.setSourceAsset(widget.asset!);
+    } else if (widget.bytes != null) {
+      player.setSourceBytes(widget.bytes!);
+    } else if (widget.file != null) {
+      player.setSourceDeviceFile(widget.file!.path);
+    }
     super.initState();
   }
 
@@ -74,6 +79,7 @@ class _FastAudioState extends State<FastAudio> {
       children: [
         _PlayerWidget(
           player: player,
+          disposeWhenExitScreen: widget.disposeWhenExitScreen,
           showVelocityButton: widget.showVelocityButton,
           animatePlayerButton: widget.animatePlayerButton,
         ),
@@ -85,9 +91,11 @@ class _FastAudioState extends State<FastAudio> {
 class _PlayerWidget extends StatefulWidget {
   final AudioPlayer player;
   final bool showVelocityButton;
+  final bool disposeWhenExitScreen;
   final bool animatePlayerButton;
   const _PlayerWidget({
     required this.player,
+    required this.disposeWhenExitScreen,
     required this.showVelocityButton,
     required this.animatePlayerButton,
   });
@@ -142,7 +150,6 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _start();
-      _start();
       _initStreams();
     });
     super.initState();
@@ -160,16 +167,13 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
   }
 
   @override
-  void setState(VoidCallback fn) {
-    if (mounted) super.setState(fn);
-  }
-
-  @override
   void dispose() {
-    _durationSubscription?.cancel();
-    _positionSubscription?.cancel();
-    _playerCompleteSubscription?.cancel();
-    _playerStateChangeSubscription?.cancel();
+    if (widget.disposeWhenExitScreen) {
+      _durationSubscription?.cancel();
+      _positionSubscription?.cancel();
+      _playerCompleteSubscription?.cancel();
+      _playerStateChangeSubscription?.cancel();
+    }
     super.dispose();
   }
 

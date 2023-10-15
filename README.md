@@ -130,6 +130,7 @@ class MyApp extends StatelessWidget {
 - FastSearchAppBar
 - FastFormField
 - FastFormFieldFile
+- FastFormAvatarFile
 - FastDropDown
 - FastSearchSelect
 - FastDialog

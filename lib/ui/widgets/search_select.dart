@@ -60,7 +60,7 @@ class _FastSearchSelectState<T> extends State<FastSearchSelect<T>> {
               builder: (context) => _Dialog(
                 items: widget.items,
                 itemBuilder: widget.itemBuilder,
-                alowMultiple: true,
+                alowMultiple: widget.alowMultiple,
                 max: widget.max,
                 onSearch: widget.onSearch,
                 searchTitle: widget.searchTitle,
@@ -143,11 +143,14 @@ class _FastSearchSelectState<T> extends State<FastSearchSelect<T>> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             if (widget.hint != null)
-                              Text(
-                                widget.hint!,
-                                style: TextStyle(
-                                  color: Colors.grey[700],
-                                  fontSize: 16,
+                              Expanded(
+                                child: Text(
+                                  widget.hint!,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.grey[700],
+                                    fontSize: 16,
+                                  ),
                                 ),
                               )
                             else
@@ -241,7 +244,6 @@ class _DialogState<T> extends State<_Dialog<T>> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: const EdgeInsets.only(top: 10),
-              height: 40,
               child: FastFormField(
                 hint: widget.searchTitle,
                 controller: search,
@@ -273,15 +275,14 @@ class _DialogState<T> extends State<_Dialog<T>> {
                       ...List.generate(filtered.length, (index) {
                         final item = filtered[index];
                         return ListTile(
-                          leading: Visibility(
-                            visible: widget.alowMultiple,
-                            child: Visibility(
-                              visible: selects.contains(item),
-                              replacement:
-                                  const Icon(Icons.check_box_outline_blank),
-                              child: const Icon(Icons.check_box_outlined),
-                            ),
-                          ),
+                          leading: widget.alowMultiple
+                              ? Visibility(
+                                  visible: selects.contains(item),
+                                  replacement:
+                                      const Icon(Icons.check_box_outline_blank),
+                                  child: const Icon(Icons.check_box_outlined),
+                                )
+                              : null,
                           title: widget.itemBuilder != null
                               ? widget.itemBuilder!(item)
                               : Text(item.toString()),
@@ -296,7 +297,11 @@ class _DialogState<T> extends State<_Dialog<T>> {
                                 }
                               });
                             } else {
-                              context.pop(item);
+                              setState(() {
+                                selects.clear();
+                                selects.add(item);
+                              });
+                              context.pop(selects);
                             }
                           },
                         );

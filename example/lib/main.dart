@@ -44,6 +44,11 @@ class _HomePageState extends State<HomePage> {
       ),
       body: FastContent(
         children: [
+          FastFormAvatarFile(
+            initialValue: FastFileInitialData.network(
+              'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+            ),
+          ),
           FastAnimate(
             type: FastAnimateType.fadeInDownBig,
             child: FastRow(
@@ -187,8 +192,8 @@ class _HomePageState extends State<HomePage> {
                   'Test 4',
                 ],
               ),
-              FastDropDown(
-                items: const [1, 2, 3, 4],
+              FastDropDown<String>(
+                items: const ['teste 1', 'teste 2', 'teste 3', 'teste 4'],
                 hint: 'Selecione o numero',
                 itemBuilder: (v) {
                   return Row(

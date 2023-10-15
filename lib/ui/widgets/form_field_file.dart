@@ -54,12 +54,17 @@ class FastFileInitialData {
   FastFileInitialData.file(this.path) : type = _FastType.file;
   FastFileInitialData.network(this.path) : type = _FastType.network;
   FastFileInitialData.asset(this.path) : type = _FastType.asset;
+
+  bool get isNetwork => type == _FastType.network;
+  bool get isAsset => type == _FastType.asset;
+  bool get isFile => type == _FastType.file;
 }
 
 class FastFormFieldFile extends StatefulWidget {
   final String hint;
   final bool showRemoveButton;
   final ShowFileType showFileType;
+  final BoxFit? fit;
   final void Function(FileData?)? onChanged;
   final double radius;
   final List<String>? accepts;
@@ -107,6 +112,7 @@ class FastFormFieldFile extends StatefulWidget {
     this.showRemoveButton = true,
     this.validator,
     this.radius = 8,
+    this.fit = BoxFit.cover,
     this.initialValue,
   });
 
@@ -187,7 +193,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                   child: Image.file(
                                     File(field.value!.path),
                                     height: 200,
-                                    fit: BoxFit.cover,
+                                    fit: widget.fit,
                                   ),
                                 ),
                             if (initialValue != null)
@@ -199,7 +205,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                     child: Image.network(
                                       initialValue!.path,
                                       height: 200,
-                                      fit: BoxFit.cover,
+                                      fit: widget.fit,
                                     ),
                                   )
                                 else if (initialValue!.type == _FastType.asset)
@@ -209,7 +215,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                     child: Image.asset(
                                       initialValue!.path,
                                       height: 200,
-                                      fit: BoxFit.cover,
+                                      fit: widget.fit,
                                     ),
                                   )
                                 else if (initialValue!.type == _FastType.file)
@@ -219,7 +225,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                     child: Image.file(
                                       File(initialValue!.path),
                                       height: 200,
-                                      fit: BoxFit.cover,
+                                      fit: widget.fit,
                                     ),
                                   ),
                             Padding(
@@ -233,7 +239,17 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                 children: [
                                   if (field.value != null ||
                                       initialValue != null)
-                                    if (widget.showFileType.showIcon(isImage))
+                                    if (widget.showFileType.showIcon(isImage) &&
+                                        widget.showFileType ==
+                                            ShowFileType.bigIcon)
+                                      Expanded(
+                                          child: _FileItem(
+                                        path: field.value?.path ??
+                                            initialValue!.path,
+                                        size: widget.showFileType.iconSize,
+                                      ))
+                                    else if (widget.showFileType
+                                        .showIcon(isImage))
                                       _FileItem(
                                         path: field.value?.path ??
                                             initialValue!.path,
