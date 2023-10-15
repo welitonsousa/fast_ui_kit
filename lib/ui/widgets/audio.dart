@@ -19,6 +19,7 @@ class FastAudio extends StatefulWidget {
   final String? asset;
   final Uint8List? bytes;
   final File? file;
+  final bool disposeWhenExitScreen;
   final bool showVelocityButton;
   final bool animatePlayerButton;
 
@@ -37,6 +38,7 @@ class FastAudio extends StatefulWidget {
     this.asset,
     this.bytes,
     this.file,
+    this.disposeWhenExitScreen = true,
     this.showVelocityButton = true,
     this.animatePlayerButton = true,
   }) : assert(url != null || asset != null || bytes != null || file != null);
@@ -60,7 +62,9 @@ class _FastAudioState extends State<FastAudio> {
 
   @override
   void dispose() {
-    player.stop().then((v) => player.dispose());
+    if (widget.disposeWhenExitScreen) {
+      player.stop().then((v) => player.dispose());
+    }
     super.dispose();
   }
 

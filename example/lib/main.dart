@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:example/pages/content_builder.dart';
 import 'package:example/pages/table_page.dart';
@@ -221,8 +222,12 @@ class _HomePageState extends State<HomePage> {
                 rangeMode: true,
               ),
               const FastAudio(
-                  url:
-                      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'),
+                url:
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+              ),
+              FastAudio(
+                file: File('C:/Users/eu15w/Downloads/audio.m4a'),
+              ),
               FastButton(
                 label: 'Dialog',
                 onPressed: () {

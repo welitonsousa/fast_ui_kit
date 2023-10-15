@@ -18,7 +18,7 @@ dependencies:
   mask: ^1.0.5
   skeletons: ^0.0.3
   zod_validation: ^1.0.1
-  audioplayers: ^4.1.0
+  audioplayers: ^5.2.0
   scrollable_clean_calendar: ^1.4.1
   uuid: ^3.0.7
   card_swiper: ^2.0.4
