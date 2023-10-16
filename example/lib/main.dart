@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:example/pages/content_builder.dart';
 import 'package:example/pages/table_page.dart';
@@ -9,6 +8,7 @@ import 'package:fast_ui_kit/ui/widgets/search_select.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  FastAudio2.initialize();
   runApp(MyApp());
 }
 
@@ -230,8 +230,8 @@ class _HomePageState extends State<HomePage> {
                 url:
                     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
               ),
-              FastAudio(
-                file: File('C:/Users/eu15w/Downloads/audio.m4a'),
+              const FastAudio2(
+                url: 'C:/Users/eu15w/Downloads/audio.m4a',
               ),
               FastButton(
                 label: 'Dialog',

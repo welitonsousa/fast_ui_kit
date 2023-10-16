@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
+import 'package:fast_ui_kit/utils/enum/velocity.dart';
 import 'package:flutter/material.dart';
 
 /// FastAudio
@@ -106,34 +107,9 @@ class _PlayerWidget extends StatefulWidget {
   }
 }
 
-/// FastAudio velocity
-enum Velocity {
-  x1,
-  x1_5,
-  x2;
-
-  String get name {
-    if (this == Velocity.x1_5) return '1,5x';
-    if (this == Velocity.x2) return '2x';
-    return '1x';
-  }
-
-  Velocity next() {
-    if (this == Velocity.x1) return Velocity.x1_5;
-    if (this == Velocity.x1_5) return Velocity.x2;
-    return Velocity.x1;
-  }
-
-  double get value {
-    if (this == Velocity.x1_5) return 1.5;
-    if (this == Velocity.x2) return 2;
-    return 1;
-  }
-}
-
 class __PlayerWidgetState extends State<_PlayerWidget> {
   PlayerState? _playerState;
-  Velocity velocity = Velocity.x1;
+  VelocityEnum velocity = VelocityEnum.x1;
   Duration _duration = const Duration();
   Duration _position = const Duration();
 

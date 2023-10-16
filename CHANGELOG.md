@@ -1,3 +1,6 @@
+## 1.0.11
+* Add FastAudio2 widget
+
 ## 1.0.10
 * Bug corrections
 * Add FastFormAvatarFile
