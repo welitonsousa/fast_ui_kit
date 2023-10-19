@@ -97,81 +97,76 @@ class _FastAudio2State extends State<FastAudio2> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (!player.state.playing)
-              FastAnimate(
-                type: widget.animatePlayerButton
-                    ? FastAnimateType.spin
-                    : FastAnimateType.none,
-                child: IconButton(
-                  onPressed: _play,
-                  iconSize: 30.0,
-                  icon: const Icon(Icons.play_arrow),
-                  color: context.colors.primary,
+      children: [
+        if (!player.state.playing)
+          FastAnimate(
+            type: widget.animatePlayerButton
+                ? FastAnimateType.spin
+                : FastAnimateType.none,
+            child: IconButton(
+              onPressed: _play,
+              iconSize: 30.0,
+              icon: const Icon(Icons.play_arrow),
+              color: context.colors.primary,
+            ),
+          ),
+        if (player.state.playing)
+          FastAnimate(
+            type: widget.animatePlayerButton
+                ? FastAnimateType.dance
+                : FastAnimateType.none,
+            child: IconButton(
+              onPressed: _pause,
+              iconSize: 30.0,
+              icon: const Icon(Icons.pause),
+              color: context.colors.primary,
+            ),
+          ),
+        Expanded(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Slider(
+                  onChanged: (v) {
+                    final duration = _duration;
+                    final position = v * duration.inMilliseconds;
+                    player.seek(Duration(milliseconds: position.round()));
+                  },
+                  value: (_position.inMilliseconds > 0)
+                      ? _position.inMilliseconds / _duration.inMilliseconds
+                      : 0.0,
                 ),
               ),
-            if (player.state.playing)
-              FastAnimate(
-                type: widget.animatePlayerButton
-                    ? FastAnimateType.dance
-                    : FastAnimateType.none,
-                child: IconButton(
-                  onPressed: _pause,
-                  iconSize: 30.0,
-                  icon: const Icon(Icons.pause),
-                  color: context.colors.primary,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(_positionText),
+                    Text(_durationText),
+                  ],
                 ),
               ),
-            Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Slider(
-                      onChanged: (v) {
-                        final duration = _duration;
-                        final position = v * duration.inMilliseconds;
-                        player.seek(Duration(milliseconds: position.round()));
-                      },
-                      value: (_position.inMilliseconds > 0)
-                          ? _position.inMilliseconds / _duration.inMilliseconds
-                          : 0.0,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(_positionText),
-                        Text(_durationText),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            ChoiceChip(
-              selected: false,
-              padding: EdgeInsets.zero,
-              backgroundColor: context.button.primaryContainer,
-              side: BorderSide(color: context.colors.primary),
-              pressElevation: 10,
-              onSelected: (v) {
-                velocity = velocity.next();
-                player.setRate(velocity.value);
-              },
-              label: SizedBox(
-                width: 30,
-                child: Center(child: Text(velocity.name)),
-              ),
-            ),
-          ],
+            ],
+          ),
+        ),
+        ChoiceChip(
+          selected: false,
+          padding: EdgeInsets.zero,
+          backgroundColor: context.button.primaryContainer,
+          side: BorderSide(color: context.colors.primary),
+          pressElevation: 10,
+          onSelected: (v) {
+            velocity = velocity.next();
+            player.setRate(velocity.value);
+          },
+          label: SizedBox(
+            width: 30,
+            child: Center(child: Text(velocity.name)),
+          ),
         ),
       ],
     );

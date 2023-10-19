@@ -1,3 +1,6 @@
+## 1.0.12
+* Bug corrections
+
 ## 1.0.11
 * Add FastAudio2 widget
 

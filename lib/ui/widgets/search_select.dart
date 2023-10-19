@@ -249,14 +249,16 @@ class _DialogState<T> extends State<_Dialog<T>> {
                 controller: search,
                 onChanged: (v) async {
                   if (widget.onSearch != null) {
-                    try {
-                      loading = true;
-                      final res = await widget.onSearch!(v);
-                      items.clear();
-                      items.addAll(res);
-                    } finally {
-                      setState(() => loading = false);
-                    }
+                    FastDebounce.call(action: () async {
+                      try {
+                        loading = true;
+                        final res = await widget.onSearch!(v);
+                        items.clear();
+                        items.addAll(res);
+                      } finally {
+                        setState(() => loading = false);
+                      }
+                    });
                   }
                 },
               ),
