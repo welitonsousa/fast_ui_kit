@@ -209,6 +209,7 @@ class _DialogState<T> extends State<_Dialog<T>> {
     if (search.text.isEmpty) return items;
 
     return items.where((element) {
+      if (widget.onSearch != null) return true;
       final text = element.toString().toLowerCase();
       return text.contains(search.text.toLowerCase());
     }).toList();
@@ -216,7 +217,6 @@ class _DialogState<T> extends State<_Dialog<T>> {
 
   @override
   void initState() {
-    search.addListener(() => setState(() {}));
     items.clear();
     items.addAll(widget.items);
     selects.addAll(widget.initialValue);
@@ -249,9 +249,10 @@ class _DialogState<T> extends State<_Dialog<T>> {
                 controller: search,
                 onChanged: (v) async {
                   if (widget.onSearch != null) {
+                    if (loading) return;
                     FastDebounce.call(action: () async {
                       try {
-                        loading = true;
+                        setState(() => loading = true);
                         final res = await widget.onSearch!(v);
                         items.clear();
                         items.addAll(res);
