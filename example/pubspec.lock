@@ -159,7 +159,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.11"
+    version: "1.0.13"
   ffi:
     dependency: transitive
     description:
@@ -304,66 +304,10 @@ packages:
     dependency: transitive
     description:
       name: media_kit
-      sha256: "1283b500341d41f033478706204a2b4ae2612e9b331c934bc4fad8c4bb869f6d"
+      sha256: "3289062540e3b8b9746e5c50d95bd78a9289826b7227e253dff806d002b9e67a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.8+2"
-  media_kit_libs_android_audio:
-    dependency: transitive
-    description:
-      name: media_kit_libs_android_audio
-      sha256: "1d9ba8814e58a12ae69014884abf96893d38e444abfb806ff38896dfe089dd15"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.5"
-  media_kit_libs_audio:
-    dependency: transitive
-    description:
-      name: media_kit_libs_audio
-      sha256: "9ccf9019edc220b8d0bfa1f53a91aa2cf2506ac860b4d5774c9d6bbdd49796ca"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.3"
-  media_kit_libs_ios_audio:
-    dependency: transitive
-    description:
-      name: media_kit_libs_ios_audio
-      sha256: "78ccf04e27d6b4ba00a355578ccb39b772f00d48269a6ac3db076edf2d51934f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.4"
-  media_kit_libs_linux:
-    dependency: transitive
-    description:
-      name: media_kit_libs_linux
-      sha256: e186891c31daa6bedab4d74dcdb4e8adfccc7d786bfed6ad81fe24a3b3010310
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.3"
-  media_kit_libs_macos_audio:
-    dependency: transitive
-    description:
-      name: media_kit_libs_macos_audio
-      sha256: "3be21844df98f286de32808592835073cdef2c1a10078bac135da790badca950"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.4"
-  media_kit_libs_windows_audio:
-    dependency: transitive
-    description:
-      name: media_kit_libs_windows_audio
-      sha256: c2fd558cc87b9d89a801141fcdffe02e338a3b21a41a18fbd63d5b221a1b8e53
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.9"
-  media_kit_native_event_loop:
-    dependency: transitive
-    description:
-      name: media_kit_native_event_loop
-      sha256: a605cf185499d14d58935b8784955a92a4bf0ff4e19a23de3d17a9106303930e
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.8"
+    version: "1.1.10+1"
   meta:
     dependency: transitive
     description:
