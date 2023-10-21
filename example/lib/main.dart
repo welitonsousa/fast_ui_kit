@@ -227,6 +227,7 @@ class _HomePageState extends State<HomePage> {
                 rangeMode: true,
               ),
               const FastAudio(
+                showProgressBar: false,
                 url:
                     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
               ),

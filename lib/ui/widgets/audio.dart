@@ -23,6 +23,7 @@ class FastAudio extends StatefulWidget {
   final bool disposeWhenExitScreen;
   final bool showVelocityButton;
   final bool animatePlayerButton;
+  final bool showProgressBar;
 
   /// FastAudio
   ///
@@ -40,6 +41,7 @@ class FastAudio extends StatefulWidget {
     this.bytes,
     this.file,
     this.disposeWhenExitScreen = true,
+    this.showProgressBar = true,
     this.showVelocityButton = true,
     this.animatePlayerButton = true,
   }) : assert(url != null || asset != null || bytes != null || file != null);
@@ -80,6 +82,7 @@ class _FastAudioState extends State<FastAudio> {
       children: [
         _PlayerWidget(
           player: player,
+          showProgressBar: widget.showProgressBar,
           disposeWhenExitScreen: widget.disposeWhenExitScreen,
           showVelocityButton: widget.showVelocityButton,
           animatePlayerButton: widget.animatePlayerButton,
@@ -94,11 +97,14 @@ class _PlayerWidget extends StatefulWidget {
   final bool showVelocityButton;
   final bool disposeWhenExitScreen;
   final bool animatePlayerButton;
+  final bool showProgressBar;
+
   const _PlayerWidget({
     required this.player,
     required this.disposeWhenExitScreen,
     required this.showVelocityButton,
     required this.animatePlayerButton,
+    required this.showProgressBar,
   });
 
   @override
@@ -187,38 +193,40 @@ class __PlayerWidgetState extends State<_PlayerWidget> {
                   color: context.colors.primary,
                 ),
               ),
-            Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Slider(
-                      onChanged: (v) {
-                        final duration = _duration;
+            if (widget.showProgressBar)
+              Expanded(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Slider(
+                        onChanged: (v) {
+                          final duration = _duration;
 
-                        final position = v * duration.inMilliseconds;
-                        player.seek(Duration(milliseconds: position.round()));
-                      },
-                      value: (_position.inMilliseconds > 0 &&
-                              _position.inMilliseconds <
-                                  _duration.inMilliseconds)
-                          ? _position.inMilliseconds / _duration.inMilliseconds
-                          : 0.0,
+                          final position = v * duration.inMilliseconds;
+                          player.seek(Duration(milliseconds: position.round()));
+                        },
+                        value: (_position.inMilliseconds > 0 &&
+                                _position.inMilliseconds <
+                                    _duration.inMilliseconds)
+                            ? _position.inMilliseconds /
+                                _duration.inMilliseconds
+                            : 0.0,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(_positionText),
-                        Text(_durationText),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(_positionText),
+                          Text(_durationText),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
             if (widget.showVelocityButton)
               ChoiceChip(
                 selected: false,
