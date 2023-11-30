@@ -36,4 +36,3 @@ export 'package:fast_ui_kit/ui/widgets/form_field_file.dart';
 export 'package:fast_ui_kit/ui/widgets/calendar.dart';
 export 'package:fast_ui_kit/ui/widgets/link_fy.dart';
 export 'package:fast_ui_kit/ui/widgets/form_avatar_file.dart';
-export 'package:fast_ui_kit/ui/widgets/audio2.dart';

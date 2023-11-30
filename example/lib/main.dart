@@ -8,7 +8,6 @@ import 'package:fast_ui_kit/ui/widgets/search_select.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  FastAudio2.initialize();
   runApp(MyApp());
 }
 
@@ -44,11 +43,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: FastContent(
         children: [
-          FastFormAvatarFile(
-            initialValue: FastFileInitialData.network(
-              'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
-            ),
-          ),
           FastAnimate(
             type: FastAnimateType.fadeInDownBig,
             child: FastRow(
@@ -226,13 +220,11 @@ class _HomePageState extends State<HomePage> {
               const FastCalendar(
                 rangeMode: true,
               ),
-              const FastAudio(
+              FastAudio(
+                updateState: setState,
                 showProgressBar: false,
                 url:
                     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-              ),
-              const FastAudio2(
-                url: 'C:/Users/eu15w/Downloads/audio.m4a',
               ),
               FastButton(
                 label: 'Dialog',
@@ -244,7 +236,8 @@ class _HomePageState extends State<HomePage> {
                         const Text('Dialog'),
                         const Text('Dialog'),
                         const Text('Dialog'),
-                        const FastAudio(
+                        FastAudio(
+                            updateState: setState,
                             url:
                                 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3'),
                         FastButton(

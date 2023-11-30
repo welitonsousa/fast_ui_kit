@@ -14,23 +14,35 @@ class FastAudioService {
   String? _audioId;
   String? get audioId => _audioId;
 
-  static get i {
+  static FastAudioService get i {
     _instance ??= FastAudioService._();
     return _instance!;
   }
 
   final player = AudioPlayer();
 
-  Future<String> play(String url) async {
+  Future<String> play(String url, {String? id}) async {
     await player.setSourceUrl(url);
     _audioId = DateTime.now().toIso8601String();
     player.resume();
     return _audioId!;
   }
 
+  Future<Duration?> get duration => player.getDuration();
+  Future<Duration?> get position => player.getCurrentPosition();
+
   Future<void> resume() => player.resume();
-  Future<void> pause() => player.pause();
-  Future<void> stop() => player.stop();
+  Future<void> pause() async {
+    await player.pause();
+    _audioId = null;
+  }
+
+  Future<void> stop() async {
+    await player.stop();
+    _audioId = null;
+  }
+
+  Future<void> velocity(double v) => player.setPlaybackRate(v);
   Future<void> seek(Duration position) => player.seek(position);
   Future<void> setVolume(double volume) => player.setVolume(volume);
 }
