@@ -1,8 +1,17 @@
+## 1.0.17
+* Bug corrections
+* Update FastAudio component
+
+## 1.0.16
+* Bug corrections
+
 ## 1.0.15
 * Bug corrections
 * Single audio player instance
+
 ## 1.0.14
 * Bug corrections
+
 ## 1.0.13
 * Bug corrections
 

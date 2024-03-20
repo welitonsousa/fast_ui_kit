@@ -202,6 +202,8 @@ context.showMessage(
 ### Utils
 - FastDebounce
 - FastUUID
+- FastClipboard
+- FastLinkFyHelper
 
 ### Services
 - FastAudioService

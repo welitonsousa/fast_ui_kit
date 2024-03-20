@@ -1,8 +1,6 @@
 import 'package:flutter/services.dart';
 
-class FastClipboard {
-  FastClipboard._();
-
+sealed class FastClipboard {
   static void copy(String text) {
     Clipboard.setData(ClipboardData(text: text));
   }

@@ -1,13 +1,12 @@
 name: fast_ui_kit
 description: Fast UI Kit is a UI kit for fast development of applications in flutter
-version: 1.0.15
+version: 1.0.17
 homepage: https://github.com/welitonsousa/fast_ui_kit
 repository: https://github.com/welitonsousa/fast_ui_kit
 issue_tracker: https://github.com/welitonsousa/fast_ui_kit/issues
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
-  # flutter: ">=1.17.0"
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
   animate_do: ^3.0.2
@@ -18,7 +17,7 @@ dependencies:
   mask: ^1.0.5
   skeletons: ^0.0.3
   zod_validation: ^1.0.1
-  audioplayers: ^5.2.0
+  audioplayers: ^6.0.0
   scrollable_clean_calendar: ^1.4.1
   uuid: ^4.1.0
   card_swiper: ^3.0.1

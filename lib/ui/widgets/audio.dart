@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:fast_ui_kit/fast_ui_kit.dart';
 import 'package:fast_ui_kit/utils/enum/velocity.dart';
 import 'package:flutter/material.dart';
@@ -17,18 +16,22 @@ import 'package:flutter/material.dart';
 
 class FastAudio extends StatefulWidget {
   final String url;
+  final bool isFile;
   final bool showVelocityButton;
   final bool animatePlayerButton;
   final bool showProgressBar;
   final Function(Function()) updateState;
+  final bool stopWhenDispose;
 
   const FastAudio({
     super.key,
     required this.url,
+    required this.updateState,
     this.showVelocityButton = true,
     this.animatePlayerButton = true,
     this.showProgressBar = true,
-    required this.updateState,
+    this.isFile = false,
+    this.stopWhenDispose = false,
   });
 
   @override
@@ -38,16 +41,52 @@ class FastAudio extends StatefulWidget {
 }
 
 class _FastAudioState extends State<FastAudio> {
+  final fastAudio = FastAudioService.i;
+  AudioPlayer audio = AudioPlayer();
+
+  @override
+  void initState() {
+    audioConfigure(init: true);
+    super.initState();
+  }
+
+  Future<void> audioConfigure({bool init = false}) async {
+    _nextFrame(() async {
+      final isFile = widget.isFile;
+      final source = FastAudioService.getSource(widget.url, isFile: isFile);
+      await audio.setSource(source);
+      final res = await audio.getDuration() ?? const Duration();
+      setState(() => duration = res);
+      if (init) initialize();
+    });
+  }
+
+  @override
+  void dispose() {
+    if (audio.state == PlayerState.playing) {
+      if (widget.stopWhenDispose) {
+        FastAudioService.i.stop(audio).then((value) {
+          audio.dispose();
+        });
+      }
+    } else {
+      if (FastAudioService.i.audio?.source.toString() ==
+          audio.source.toString()) {
+        FastAudioService.i.stop(audio).then((_) => audio.dispose());
+      } else {
+        audio.dispose();
+      }
+    }
+    super.dispose();
+  }
+
   PlayerState get playerState {
-    final audio = FastAudioService.i;
-    if (audio.audioId != audioId) return PlayerState.stopped;
-    return FastAudioService.i.player.state;
+    return audio.state;
   }
 
   VelocityEnum velocity = VelocityEnum.x1;
   Duration duration = const Duration();
   Duration position = const Duration();
-  String? audioId;
 
   StreamSubscription<dynamic>? durationSubscription;
   StreamSubscription<dynamic>? positionSubscription;
@@ -130,15 +169,9 @@ class _FastAudioState extends State<FastAudio> {
                 pressElevation: 10,
                 onSelected: (v) {
                   final player = FastAudioService.i;
-                  if (player.audioId != audioId) return;
-
                   velocity = velocity.next();
-                  if (player.player.state != PlayerState.playing) {
-                    player.velocity(velocity.value);
-                    player.pause();
-                  } else {
-                    player.velocity(velocity.value);
-                  }
+                  player.velocity(audio, velocity.value);
+                  setState(() {});
                 },
                 label: SizedBox(
                   width: 30,
@@ -152,43 +185,49 @@ class _FastAudioState extends State<FastAudio> {
   }
 
   Timer? timer;
-  void _playTimer() {
-    timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
-      position = await FastAudioService.i.player.getCurrentPosition() ??
-          const Duration();
-      if (mounted) setState(() {});
-      if (FastAudioService.i.audioId != audioId) timer.cancel();
-      if (position.inMilliseconds >= duration.inMilliseconds) {
-        timer.cancel();
-        _nextFrame(() => setState(() {}));
+  void _playTimer() async {
+    timer = Timer.periodic(const Duration(milliseconds: 200), (_) async {
+      position = (await audio.getCurrentPosition()) ?? const Duration();
+      if (!mounted) _.cancel();
+      if (playerState == PlayerState.completed) {
+        setState(() {});
+        _.cancel();
       }
+      if (mounted) setState(() {});
     });
   }
 
-  Future<void> _getDuration() async {
-    if (this.duration != const Duration()) return;
-    final duration = await FastAudioService.i.duration;
-    this.duration = duration ?? const Duration();
+  Future<void> initialize() async {
+    final res = FastAudioService.i.audio;
+    if (res != null && res.source.toString() == audio.source.toString()) {
+      audio = res;
+      position = await FastAudioService.i.position(audio) ?? const Duration();
+      if (audio.state == PlayerState.playing) _playTimer();
+      setState(() {});
+    }
   }
 
   Future<void> play() async {
-    final id = await FastAudioService.i.play(widget.url, id: audioId);
-    audioId = id;
-    _getDuration();
+    final source = FastAudioService.getSource(
+      widget.url,
+      isFile: widget.isFile,
+    );
+    await audio.setSource(source);
+    await FastAudioService.i.play(audio);
+
     _playTimer();
-    _nextFrame(() => widget.updateState(() {}));
+    setState(() {});
   }
 
   Future<void> pause() async {
-    await FastAudioService.i.pause();
     timer?.cancel();
-    _nextFrame(() => setState(() {}));
+    await FastAudioService.i.pause(audio);
+    setState(() {});
   }
 
   Future<void> setPosition(double milliseconds) async {
-    if (audioId != FastAudioService.i.audioId) return;
     final position = Duration(milliseconds: milliseconds.round());
-    await FastAudioService.i.seek(position);
+    await FastAudioService.i.seek(audio, position);
     _nextFrame(() => setState(() {}));
   }
 

@@ -68,13 +68,13 @@ class _HomePageState extends State<HomePage> {
             children: [
               FastFormFieldFile(
                 initialValue: FastFileInitialData.network(
-                  'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+                  'https://gestor.fastzap.chat/assets/logo-fastzapplus.png',
                 ),
               ),
               FastFormFieldFile(
                 showFileType: ShowFileType.bigIcon,
                 initialValue: FastFileInitialData.network(
-                  'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+                  'https://gestor.fastzap.chat/assets/logo-fastzapplus.png',
                 ),
               ),
               const FastFormFieldFile(
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
               FastFormFieldFile(
                 showFileType: ShowFileType.iconAndName,
                 initialValue: FastFileInitialData.network(
-                  'https://dev-gestor-fastzap.vercel.app/assets/logo-fastzapplus.png',
+                  'https://gestor.fastzap.chat/assets/logo-fastzapplus.png',
                 ),
               ),
               FastButtonIcon(
@@ -222,9 +222,15 @@ class _HomePageState extends State<HomePage> {
               ),
               FastAudio(
                 updateState: setState,
-                showProgressBar: false,
+                showProgressBar: true,
                 url:
                     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+              ),
+              FastAudio(
+                updateState: setState,
+                showProgressBar: true,
+                url:
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
               ),
               FastButton(
                 label: 'Dialog',
