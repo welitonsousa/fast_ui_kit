@@ -1,3 +1,9 @@
+## 1.0.19
+* Bug corrections
+
+## 1.0.18
+* Bug corrections
+
 ## 1.0.17
 * Bug corrections
 * Update FastAudio component

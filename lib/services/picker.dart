@@ -50,12 +50,32 @@ class FastPickerService {
     FastPickerType type = FastPickerType.image,
     List<String>? accept,
     bool multiple = false,
+    bool allotComplession = true,
+    int compressionQuality = 30,
+    String? dialogTitle,
+    String? initialDirectory,
+    bool lockParentWindow = false,
+    dynamic Function(FilePickerStatus)? onFileLoading,
+    bool readSequential = false,
+    bool withData = false,
+bool withReadStream = false,
+
+
   }) async {
     try {
       final result = await FilePicker.platform.pickFiles(
         allowMultiple: multiple,
         type: type._picker,
         allowedExtensions: accept,
+        allowCompression: allotComplession,
+        compressionQuality: compressionQuality,
+        dialogTitle: dialogTitle,
+        initialDirectory: initialDirectory,
+        lockParentWindow:  lockParentWindow,
+        onFileLoading: onFileLoading,
+        readSequential: readSequential,
+        withData: withData,
+        withReadStream: withReadStream
       );
       if (result != null) {
         return result.files.map<FileData>((e) {

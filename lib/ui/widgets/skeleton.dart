@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skeletons/skeletons.dart';
+import 'package:shimmer/shimmer.dart';
 
 class FastSkeleton extends StatelessWidget {
   final double height;
@@ -24,18 +24,16 @@ class FastSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Skeleton(
-      isLoading: true,
-      skeleton: SkeletonLine(
-        style: SkeletonLineStyle(
-          height: height,
-          padding: padding,
-          borderRadius: BorderRadius.all(
-            Radius.circular(radius),
-          ),
-        ),
+    return Container(
+      height: height,
+      padding: padding,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius)),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade100,
+        enabled: true,
+        child: const SizedBox(),
       ),
-      child: const SizedBox.shrink(),
     );
   }
 }
