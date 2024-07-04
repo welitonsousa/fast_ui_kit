@@ -350,7 +350,8 @@ class _FileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final format = path.split('.').last;
+    final fileName = path.split('?')[0];
+    final format = fileName.split('.').last;
 
     if (pdfFormats.contains(format)) {
       return Icon(FastIcons.mci.file_pdf_outline, size: size);
