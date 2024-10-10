@@ -144,7 +144,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
       validator: widget.validator,
       builder: (field) {
         final isImage = _FileItem(path: '', size: null).imagesFormats.contains(
-            (field.value?.path ?? initialValue?.path)?.split('.').last);
+            (field.value?.path ?? initialValue?.path)?.split('?')[0].split('.').last);
         return InkWell(
           borderRadius: BorderRadius.circular(widget.radius),
           onTap: () async {

@@ -1,5 +1,8 @@
+## 1.0.21
+* Bug corrections
+
 ## 1.0.20
-* FastFormFieldFile support at newtwork files with query params
+* FastFormFieldFile support at network files with query params
 
 ## 1.0.19
 * Bug corrections
