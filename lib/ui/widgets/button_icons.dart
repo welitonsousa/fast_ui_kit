@@ -45,9 +45,9 @@ class _FastButtonIconState extends State<FastButtonIcon> {
   ButtonStyle? get style {
     if (widget.onPressed != null) {
       return ButtonStyle(
-          elevation: MaterialStateProperty.all(widget.elevation ?? 0),
-          backgroundColor: MaterialStateProperty.all<Color>(bgColor),
-          shape: MaterialStateProperty.all<OutlinedBorder>(
+          elevation: WidgetStateProperty.all(widget.elevation ?? 0),
+          backgroundColor: WidgetStateProperty.all<Color>(bgColor),
+          shape: WidgetStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(widget.radius ?? 200),
               side: BorderSide(color: borderColor, width: 2),

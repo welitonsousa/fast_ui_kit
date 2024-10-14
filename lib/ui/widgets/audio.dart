@@ -186,12 +186,12 @@ class _FastAudioState extends State<FastAudio> {
 
   Timer? timer;
   void _playTimer() async {
-    timer = Timer.periodic(const Duration(milliseconds: 200), (_) async {
+    timer = Timer.periodic(const Duration(milliseconds: 200), (t) async {
       position = (await audio.getCurrentPosition()) ?? const Duration();
-      if (!mounted) _.cancel();
+      if (!mounted) t.cancel();
       if (playerState == PlayerState.completed) {
         setState(() {});
-        _.cancel();
+        t.cancel();
       }
       if (mounted) setState(() {});
     });

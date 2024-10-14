@@ -1,3 +1,6 @@
+## 1.0.22
+* Audio plugind corrections
+
 ## 1.0.21
 * Bug corrections
 

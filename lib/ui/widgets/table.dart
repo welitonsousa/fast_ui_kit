@@ -91,8 +91,8 @@ class FastTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HorizontalDataTable(
-      leftHandSideColBackgroundColor: context.colors.background,
-      rightHandSideColBackgroundColor: context.colors.background,
+      leftHandSideColBackgroundColor: context.colors.surface,
+      rightHandSideColBackgroundColor: context.colors.surface,
       leftHandSideColumnWidth: 0,
       rightHandSideColumnWidth: header.fold(.0, (p, e) => p + e.width),
       isFixedHeader: header.isNotEmpty && fixedHeader,

@@ -43,7 +43,7 @@ class FastCarousel extends StatelessWidget {
   /// )
   /// ```
   const FastCarousel({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     required this.itemCount,
     this.labels,
@@ -51,7 +51,7 @@ class FastCarousel extends StatelessWidget {
     this.scale = 0.9,
     this.duration = const Duration(seconds: 10),
     this.fraction = 0.8,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

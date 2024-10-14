@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:audioplayers/audioplayers.dart';
 export 'package:audioplayers/audioplayers.dart';
 
@@ -66,9 +68,20 @@ class FastAudioService {
   AudioPlayer? get audio => _audio;
 
   Future<void> play(AudioPlayer player) async {
+    if (Platform.isAndroid) {
+      final cxt = AudioContext(
+        android: const AudioContextAndroid(
+          isSpeakerphoneOn: true,
+          stayAwake: true,
+          audioFocus: AndroidAudioFocus.none,
+        ),
+      );
+      await player.setAudioContext(cxt);
+    }
     if (player.source.toString() != _audio?.source.toString()) {
       await _audio?.stop();
     }
+    player.setVolume(1);
     await player.resume();
     _audio = player;
     _state = AudioState(

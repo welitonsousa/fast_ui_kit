@@ -51,12 +51,10 @@ class FastRow extends StatelessWidget {
         crossAxisAlignment: cross,
         children: [
           if (extreme) SizedBox(width: xGap / 2),
-          ...children
-              .map((e) => Padding(
-                    padding: EdgeInsets.symmetric(horizontal: xGap / 2),
-                    child: e,
-                  ))
-              .toList(),
+          ...children.map((e) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: xGap / 2),
+                child: e,
+              )),
           if (extreme) SizedBox(width: xGap / 2),
         ],
       ),

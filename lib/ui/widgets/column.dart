@@ -37,12 +37,10 @@ class FastColumn extends StatelessWidget {
         mainAxisSize: size,
         children: [
           if (extreme) SizedBox(height: yGap / 2),
-          ...children
-              .map((e) => Padding(
-                    padding: EdgeInsets.symmetric(vertical: yGap / 2),
-                    child: e,
-                  ))
-              .toList(),
+          ...children.map((e) => Padding(
+                padding: EdgeInsets.symmetric(vertical: yGap / 2),
+                child: e,
+              )),
           if (extreme) SizedBox(height: yGap / 2),
         ],
       ),
