@@ -7,9 +7,9 @@ class FastFormAvatarFile extends StatefulWidget {
   final BoxFit? fit;
   final double size;
   final Widget? emptyWidget;
-  final void Function(FileData?)? onChanged;
+  final void Function(PlatformFile?)? onChanged;
   final FastFileInitialData? initialValue;
-  final String? Function(FileData?)? validator;
+  final String? Function(PlatformFile?)? validator;
 
   /// FastFormAvatarFile is used to select a file
   ///
@@ -74,7 +74,7 @@ class _FastFormAvatarFileState extends State<FastFormAvatarFile> {
 
   @override
   Widget build(BuildContext context) {
-    return FormField<FileData>(
+    return FormField<PlatformFile>(
       validator: widget.validator,
       builder: (field) {
         return Align(
@@ -108,7 +108,7 @@ class _FastFormAvatarFileState extends State<FastFormAvatarFile> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(100),
                       child: Image.file(
-                        File(field.value!.path),
+                        File(field.value!.path!),
                         height: widget.size,
                         width: widget.size,
                         fit: widget.fit,

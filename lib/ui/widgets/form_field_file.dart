@@ -65,11 +65,11 @@ class FastFormFieldFile extends StatefulWidget {
   final bool showRemoveButton;
   final ShowFileType showFileType;
   final BoxFit? fit;
-  final void Function(FileData?)? onChanged;
+  final void Function(PlatformFile?)? onChanged;
   final double radius;
   final List<String>? accepts;
   final FastFileInitialData? initialValue;
-  final String? Function(FileData?)? validator;
+  final String? Function(PlatformFile?)? validator;
 
   /// FastFormFieldFile is used to select a file
   ///
@@ -140,7 +140,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
 
   @override
   Widget build(BuildContext context) {
-    return FormField<FileData>(
+    return FormField<PlatformFile>(
       validator: widget.validator,
       builder: (field) {
         final isImage = _FileItem(path: '', size: null).imagesFormats.contains(
@@ -191,7 +191,7 @@ class _FastFormFieldFileState extends State<FastFormFieldFile> {
                                     widget.radius,
                                   ),
                                   child: Image.file(
-                                    File(field.value!.path),
+                                    File(field.value!.path!),
                                     height: 200,
                                     fit: widget.fit,
                                   ),

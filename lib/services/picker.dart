@@ -1,8 +1,7 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
-
+export 'package:file_picker/file_picker.dart';
 /// use this enum to select the type of file
 /// [any] any file
 /// [media] any media file
@@ -46,12 +45,12 @@ class FileData {
 /// );
 /// ```
 class FastPickerService {
-  static Future<List<FileData>?> picker({
+  static Future<List<PlatformFile>?> picker({
     FastPickerType type = FastPickerType.image,
     List<String>? accept,
     bool multiple = false,
-    bool allotComplession = true,
-    int compressionQuality = 30,
+    bool allowCompression = false,
+    int compressionQuality = 0,
     String? dialogTitle,
     String? initialDirectory,
     bool lockParentWindow = false,
@@ -67,7 +66,7 @@ bool withReadStream = false,
         allowMultiple: multiple,
         type: type._picker,
         allowedExtensions: accept,
-        allowCompression: allotComplession,
+        allowCompression: allowCompression,
         compressionQuality: compressionQuality,
         dialogTitle: dialogTitle,
         initialDirectory: initialDirectory,
@@ -78,13 +77,7 @@ bool withReadStream = false,
         withReadStream: withReadStream
       );
       if (result != null) {
-        return result.files.map<FileData>((e) {
-          final file = File(e.path!);
-          return FileData(
-            data: file.readAsBytesSync(),
-            path: file.path,
-          );
-        }).toList();
+        return result.files;
       }
     } on UnimplementedError {
       throw 'Unimplemented method channel -> please, uninstall your app and install again.';
