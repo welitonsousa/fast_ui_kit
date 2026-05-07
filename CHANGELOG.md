@@ -1,3 +1,6 @@
+## 1.0.24
+* Update file picker package to version 11.0.2
+
 ## 1.0.23
 * Bug corrections
 

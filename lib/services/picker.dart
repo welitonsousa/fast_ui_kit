@@ -1,7 +1,9 @@
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
+
 export 'package:file_picker/file_picker.dart';
+
 /// use this enum to select the type of file
 /// [any] any file
 /// [media] any media file
@@ -57,25 +59,22 @@ class FastPickerService {
     dynamic Function(FilePickerStatus)? onFileLoading,
     bool readSequential = false,
     bool withData = false,
-bool withReadStream = false,
-
-
+    bool withReadStream = false,
   }) async {
     try {
       final result = await FilePicker.platform.pickFiles(
-        allowMultiple: multiple,
-        type: type._picker,
-        allowedExtensions: accept,
-        allowCompression: allowCompression,
-        compressionQuality: compressionQuality,
-        dialogTitle: dialogTitle,
-        initialDirectory: initialDirectory,
-        lockParentWindow:  lockParentWindow,
-        onFileLoading: onFileLoading,
-        readSequential: readSequential,
-        withData: withData,
-        withReadStream: withReadStream
-      );
+          allowMultiple: multiple,
+          type: type._picker,
+          allowedExtensions: accept,
+          allowCompression: allowCompression,
+          compressionQuality: compressionQuality,
+          dialogTitle: dialogTitle,
+          initialDirectory: initialDirectory,
+          lockParentWindow: lockParentWindow,
+          onFileLoading: onFileLoading,
+          readSequential: readSequential,
+          withData: withData,
+          withReadStream: withReadStream);
       if (result != null) {
         return result.files;
       }

@@ -1,6 +1,6 @@
 name: fast_ui_kit
 description: Fast UI Kit is a UI kit for fast development of applications in flutter
-version: 1.0.23
+version: 1.0.24
 homepage: https://github.com/welitonsousa/fast_ui_kit
 repository: https://github.com/welitonsousa/fast_ui_kit
 issue_tracker: https://github.com/welitonsousa/fast_ui_kit/issues
@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   animate_do: ^3.0.2
-  file_picker: ^8.0.3
+  file_picker: ^11.0.2
   flutter:
     sdk: flutter
   horizontal_data_table: ^4.2.0
