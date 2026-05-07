@@ -51,7 +51,7 @@ class FastPickerService {
     FastPickerType type = FastPickerType.image,
     List<String>? accept,
     bool multiple = false,
-    bool allowCompression = false,
+    // bool allowCompression = false,
     int compressionQuality = 0,
     String? dialogTitle,
     String? initialDirectory,
@@ -62,11 +62,12 @@ class FastPickerService {
     bool withReadStream = false,
   }) async {
     try {
-      final result = await FilePicker.platform.pickFiles(
+      final result = await FilePicker.pickFiles(
           allowMultiple: multiple,
           type: type._picker,
           allowedExtensions: accept,
-          allowCompression: allowCompression,
+
+          // allowCompression: allowCompression,
           compressionQuality: compressionQuality,
           dialogTitle: dialogTitle,
           initialDirectory: initialDirectory,
